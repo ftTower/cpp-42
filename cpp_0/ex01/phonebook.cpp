@@ -1,87 +1,60 @@
 #include "phonebook.hpp"
-// #include <contacthpp> // Include the necessary header file for the contact class
 
-contact::contact(void) { return; }
+PhoneBook::PhoneBook() : index(0), totalContacts(0) {}
 
-const int MAX_CONTACT = 8;
-
-static void menu()
+void    PhoneBook::addContact(const Contact &contact)
 {
-    std::cout << std::endl
-              << "- ADD" << std::endl
-              << "- SEARCH" << std::endl
-              << "- EXIT" << std::endl
-              << std::endl;
+    int pos = index % MAX_CONTACTS;
+    contacts[pos] = contact;
+    if (index == MAX_CONTACTS)
+        index = 0;
+    if (totalContacts < MAX_CONTACTS)
+        totalContacts++;
+    index++;
 }
 
-contact addContact(void)
-{
-    contact newContact;
-    std::string buffer;
 
-    std::cout << "first name : ";
-    getline(std::cin, buffer, '\n');
-    newContact.first_name = buffer;
-    std::cout << "last name  : ";
-    getline(std::cin, buffer, '\n');
-    newContact.last_name = buffer;
-    std::cout << "phone numb : ";
-    getline(std::cin, buffer, '\n');
-    newContact.phone_number = buffer;
-    std::cout << "darkest secret : ";
-    getline(std::cin, buffer, '\n');
-    newContact.darkest_secret = buffer;
-    return (std::cout << "\033c", newContact);
+void   PhoneBook::displaySearchMenu() const
+{
+    std::cout << std::setw(10) << "Index" << "|"
+              << std::setw(10) << "First Name" << "|"
+              << std::setw(10) << "Last Name" << "|"
+              << std::setw(10) << "Nickname" << std::endl;
+    std::cout << "---------------------------------------------" << std::endl;
 }
 
-void searchContact(contact phonebook[], int nbr_contact)
+void    PhoneBook::displaySearchContacts() const
 {
-    int index;
-
-    index = 0;
-    std::cout << "\033c";
-    while (index < nbr_contact)
+    for (int pos = 0; pos < totalContacts; pos++)
     {
-        std::cout << phonebook[index].first_name << " ";
-        std::cout << phonebook[index].last_name << " ";
-        std::cout << phonebook[index].phone_number << " ";
-        std::cout << phonebook[index].darkest_secret;
-        std::cout << std::endl;
-        index++;
+        std::cout << std::setw(10) << (contacts[pos].getFirstName().length() > 10 ? contacts[pos].getFirstName().substr(0, 9) + "." : contacts[pos].getFirstName()) << "|"
+                    << std::setw(10) << (contacts[pos].getLastName().length() > 10 ? contacts[pos].getLastName().substr(0, 9) + "." : contacts[pos].getLastName()) << "|"
+                    << std::setw(10) << (contacts[pos].getNickName().length() > 10 ? contacts[pos].getNickName().substr(0, 9) + "." : contacts[pos].getNickName()) << "|"
+                    <<std::endl;
     }
 }
 
-int main(void)
+void    PhoneBook::displayContact(int pos) const
 {
-    int contact_index;
-  
-    int numContact;
-  
-    contact phonebook[MAX_CONTACT];
-    std::string command;
+    if (pos < 0 || pos > MAX_CONTACTS)
+        return ;
+    
+}
 
-    contact_index = 0;
-    numContact = 0;
-    std::cout << std::endl
-              << "\033[38;5;196m" << "HELLO PHONEBOOK" << "\033[0m" << std::endl;
-    while (1)
+int    PhoneBook::getSearchPos() const
+{
+    int pos = -1;
+    while(pos < 0 || pos > MAX_CONTACTS)
     {
-        menu();
-        getline(std::cin, command, '\n');
-        if ((command == "EXIT" || command == "exit") && std::cout << "\033c")
-            break;
-        else if (command == "ADD" || command == "add")
-        {
-            if (contact_index == MAX_CONTACT)
-                contact_index = 0;
-            phonebook[contact_index++] = addContact();
-            if (numContact < MAX_CONTACT)
-                numContact++;   
-        }
-        else if (command == "SEARCH" || command == "search")
-            searchContact(phonebook, numContact);
-        else
-            std::cout << "command not found" << std::endl;
+        std::cout << "Please enter a number beetwen 0 and " << MAX_CONTACTS << std::endl;
+        std::cin >> pos;
     }
-    return (0);
+    return (pos);
+}
+
+void    PhoneBook::searchContact() const 
+{
+    displaySearchMenu();
+    displaySearchContacts();
+    displayContact(getSearchPos());
 }

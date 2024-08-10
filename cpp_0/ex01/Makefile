@@ -13,9 +13,9 @@
 SRC_DIR		=
 BUILD_DIR	=	build
 NAME		=	phonebook
-CFLAG		=	-Wall -Wextra -Werror -g3 -std=c++98
+CFLAG		=	-Wall -Wextra -Werror -g3 -std=c++98 
 
-SRC			=	phonebook.cpp
+SRC			=	main.cpp contact.cpp phonebook.cpp
 			
 CC			=	g++
 
