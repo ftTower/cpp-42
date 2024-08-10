@@ -2,6 +2,7 @@
 
 PhoneBook::PhoneBook() : index(0), totalContacts(0) {}
 
+
 void    PhoneBook::addContact(const Contact &contact)
 {
     int pos = index % MAX_CONTACTS;
@@ -13,6 +14,28 @@ void    PhoneBook::addContact(const Contact &contact)
     index++;
 }
 
+Contact PhoneBook::getContact() const
+{
+    Contact newContact;
+    
+    std::string buf;
+    std::cout << "Enter First Name : " << std::endl;
+    std::cin >> buf;
+    newContact.setFirstName(buf);
+    std::cout << "Enter Last Name : " << std::endl;
+    std::cin >> buf;
+    newContact.setLastName(buf);
+    std::cout << "Enter Nick Name : " << std::endl;
+    std::cin >> buf;
+    newContact.setNickName(buf);
+    std::cout << "Enter Phone Number : " << std::endl;
+    std::cin >> buf;
+    newContact.setPhoneNumber(buf);
+    std::cout << "Enter Darkest Secret : " << std::endl;
+    std::cin >> buf;
+    newContact.setDarkestSecret(buf);
+    return (newContact);
+}
 
 void   PhoneBook::displaySearchMenu() const
 {
@@ -48,6 +71,7 @@ int    PhoneBook::getSearchPos() const
     {
         std::cout << "Please enter a number beetwen 0 and " << MAX_CONTACTS << std::endl;
         std::cin >> pos;
+        
     }
     return (pos);
 }

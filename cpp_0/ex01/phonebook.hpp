@@ -18,7 +18,9 @@ private:
 
 public:
     PhoneBook();
+    void    displayMenu(bool display_top);
     void    addContact(const Contact &contact);
+    Contact getContact() const;
     void    searchContact() const;
     void    displaySearchMenu() const;
     void    displaySearchContacts() const;
