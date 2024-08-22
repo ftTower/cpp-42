@@ -4,7 +4,7 @@ BUILD_DIR	=	build
 NAME		=	Weapons
 CFLAG		=	-Wall -Wextra -Werror -g3 -std=c++98 
 
-SRC			=	main.cpp HumanA.cpp weapon.cpp
+SRC			=	main.cpp HumanA.cpp HumanB.cpp weapon.cpp
 			
 CC			=	g++
 
