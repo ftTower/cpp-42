@@ -1,7 +1,5 @@
-
-SRC_DIR		=
 BUILD_DIR	=	build
-NAME		=	Sed
+NAME		=	sed
 CFLAG		=	-Wall -Wextra -Werror -g3 -std=c++98 
 
 SRC			=	main.cpp 
