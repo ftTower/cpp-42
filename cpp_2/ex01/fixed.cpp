@@ -14,7 +14,8 @@ Fixed::Fixed(const Fixed &other) {
 
 Fixed &Fixed::operator=(const Fixed &other) {
     std::cout << "affectation constructor called" << std::endl;
-    setRawBits(other.getRawBits());
+    if (this != &other)
+        setRawBits(other.getRawBits());
     return (*this);
 }
 
