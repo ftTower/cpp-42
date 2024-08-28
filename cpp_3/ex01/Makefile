@@ -2,7 +2,7 @@ BUILD_DIR	=	build
 NAME		=	clapTrap
 CFLAG		=	-Wall -Wextra -Werror -g3 -std=c++98 
 
-SRC			=	main.cpp ClapTrap.cpp
+SRC			=	main.cpp ClapTrap.cpp ScavTrap.cpp
 			
 CC			=	g++
 
