@@ -1,8 +1,8 @@
 BUILD_DIR	=	build
-NAME		=	scrapTrap
+NAME		=	fragTrap
 CFLAG		=	-Wall -Wextra -Werror -g3 -std=c++98 
 
-SRC			=	main.cpp ClapTrap.cpp ScavTrap.cpp
+SRC			=	main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 			
 CC			=	g++
 
