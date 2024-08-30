@@ -4,29 +4,64 @@
 #include <iostream>
 
 class Animal {
-    private :
+    protected :
     std::string type;
     
     public:
-    Animal(std::string type) : type(type) {}
-    ~Animal() {}
 
-    void    makeSound(std::string sound) {
-        std::cout << type << " : " << sound << std::endl;
+    Animal() {
+        std::cout << "Animal constructor called" << std::endl<< std::endl;
+    };
+    virtual ~Animal() {
+        std::cout << "Animal deconstructor called" << std::endl;
+    };
+
+    virtual void    makeSound() const {
+        std::cout << "Animal sound" << std::endl;
+    }
+    std::string getType() const{
+        return (type);
+    }
+    void    kill() const
+    {
+        delete(this);
     }
 };
 
 class Dog : public Animal {
 
-    private :
-    std::string sound;
+    public:
+    
+    Dog() {
+        type = "Dog";
+        std::cout << "Dog constructor called" << std::endl<< std::endl;
+    }
+    
+    virtual ~Dog() {
+        std::cout << "Dog deconstructor called" << std::endl;
+    }
+
+    void    makeSound() const{
+        std::cout << "WOUF WOUF WOUF ARGRRRRRRRR" << std::endl;
+    }
+};
+
+class Cat : public Animal {
 
     public:
-    Dog(std::string type) : Animal(type) {
-        this->sound = "WOUFARRRRRR WOUF";
+    
+    Cat() {
+        type = "Cat";
+        std::cout << "Dog constructor called" << std::endl<< std::endl;
     }
-    ~Dog() {}
+    
+    virtual ~Cat() {
+        std::cout << "Dog deconstructor called" << std::endl;
+    }
 
+    void    makeSound() const{
+        std::cout << "MMrrrRaouuuuw" << std::endl;
+    }
 };
 
 
