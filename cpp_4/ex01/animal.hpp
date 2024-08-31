@@ -28,22 +28,33 @@ class Animal {
     }
 };
 
+class Brain {
+    public :
+    std::string ideas[100];
+
+};
+
 class Dog : public Animal {
 
     public:
     
     Dog() {
         type = "Dog";
+        brain = new(Brain);
         std::cout << "Dog constructor called" << std::endl<< std::endl;
     }
     
     virtual ~Dog() {
+        delete(brain);
         std::cout << "Dog deconstructor called" << std::endl;
     }
 
     void    makeSound() const{
         std::cout << "WOUF WOUF WOUF ARGRRRRRRRR" << std::endl;
     }
+
+    private:
+    Brain *brain;
 };
 
 class Cat : public Animal {
@@ -52,16 +63,21 @@ class Cat : public Animal {
     
     Cat() {
         type = "Cat";
+        brain = new(Brain);
         std::cout << "Cat constructor called" << std::endl<< std::endl;
     }
     
     virtual ~Cat() {
+        delete(brain);
         std::cout << "Cat deconstructor called" << std::endl;
     }
 
     void    makeSound() const{
         std::cout << "MMrrrRaouuuuw" << std::endl;
     }
+
+    private:
+    Brain *brain;
 };
 
 
