@@ -5,13 +5,13 @@ int main() {
     try {
         Bureaucrat bob("Bob", 50);
         Form formA("FormA", 45, 30);
-        Form formB("FormB", 55, 50);
+        Form formB("FormB", 150, 150);
 
         std::cout << formA << std::endl;
         std::cout << formB << std::endl;
 
-        // bob.signForm(formA);
-        // bob.signForm(formB);
+        bob.signForm(formA);
+        bob.signForm(formB);
 
         std::cout << formA << std::endl;
         std::cout << formB << std::endl;

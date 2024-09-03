@@ -4,6 +4,8 @@
 #include "stdbool.h"
 #include "Bureaucrate.hpp"
 
+class Bureaucrat;
+
 class Form {
     private:
 
@@ -14,13 +16,15 @@ class Form {
 
     public:
     Form(const std::string &name, int gradeToSign, int gradeToExecute);
-    ~Form() {};
+    ~Form();
 
-    const std::string &Form::getName() const {return (name);}
-    bool              Form::isSigned() const {return (isSigned);}
-    int               Form::getGradeToSign() const {return (gradeToSign);}
-    int               Form::getGradeToExecute() const {return (gradeToExecute);}
-    
+    const std::string &getName() const {return (name);}
+    bool              getSign() const {return (isSigned);}
+    int               getGradeToSign() const {return (gradeToSign);}
+    int               getGradeToExecute() const {return (gradeToExecute);}
+    void              beSigned(const Bureaucrat &bureaucrat__);
+
+    //----------------------exeception---------
 
     class GradeTooHighException : public std::exception {
         public:
@@ -35,14 +39,9 @@ class Form {
                 return ("Form grade too Low");
             }
     };
-    
-    void    beSigned(const Bureaucrat &bureaucrat) {
-        if (bureaucrat.getGrade() > gradeToSign) {throw GradeTooLowException();}
-            isSigned = true;
-    };
-
 };
 
-std::ostream &operator<<(std::ostream &out, Bureaucrat &Bureaucrat);
+//----------------------operator---------
+std::ostream &operator<<(std::ostream &out, const Form &form);
     
 #endif

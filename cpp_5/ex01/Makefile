@@ -2,7 +2,7 @@ BUILD_DIR	=	build
 NAME		=	Form
 CFLAG		=	-Wall -Wextra -Werror -g3 -std=c++98 
 
-SRC			=	main.cpp Form.cpp
+SRC			=	main.cpp Form.cpp Bureaucrate.cpp
 			
 CC			=	g++
 
