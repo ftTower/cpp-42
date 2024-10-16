@@ -10,8 +10,6 @@ Fixed::Fixed(const Fixed &other) {
     *this = other;
 }
 
-
-
 Fixed &Fixed::operator=(const Fixed &other) {
     std::cout << "affectation constructor called" << std::endl;
     if (this != &other)
@@ -23,23 +21,17 @@ Fixed::~Fixed () {
     std::cout << "destructor called" << std::endl;
 }
 
-
-
 Fixed::Fixed(const int n) {
     std::cout << "const int constructor called with " << n << std::endl;
     setRawBits(n << this->rawBit);
 }
-
 
 Fixed::Fixed(const float f) {
     std::cout << "const float constructor called with " << f << std::endl;
     this->setRawBits((int)roundf(f * (1 << this->rawBit)));
 }
 
-
-int Fixed::toInt() const {
-    return(this->getRawBits() >> this->rawBit);
-}
+int Fixed::toInt() const {return(this->getRawBits() >> this->rawBit);}
 
 float Fixed::toFloat() const {
     float f;
@@ -48,14 +40,8 @@ float Fixed::toFloat() const {
     return(f);
 }
 
-int Fixed::getRawBits() const {
-    // std::cout << "getRawBits called" << std::endl;
-    return (this->fixedPointValue);
-}
+int Fixed::getRawBits() const {return (this->fixedPointValue);}
 
-void Fixed::setRawBits(int const raw) {
-    // std::cout << "setRawBits called" << std::endl;
-    this->fixedPointValue = raw;
-}
+void Fixed::setRawBits(int const raw) {this->fixedPointValue = raw;}
 
 

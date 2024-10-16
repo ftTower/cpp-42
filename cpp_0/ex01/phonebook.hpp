@@ -6,7 +6,7 @@
 #include <iomanip>
 
 #ifndef MAX_CONTACTS
-#define MAX_CONTACTS 3
+#define MAX_CONTACTS 8
 #endif
 
 class PhoneBook {
@@ -24,7 +24,7 @@ public:
     void    searchContact() const;
     void    displaySearchMenu(bool full_info) const;
     void    displaySearchContacts() const;
-    int    getSearchPos() const;
+    int     getSearchPos() const;
     void    displayContact(int pos) const;
 };
 

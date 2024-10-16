@@ -3,8 +3,6 @@
 
 #include <iostream>
 
-
-
 class Zombie {
 
     private:

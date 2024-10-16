@@ -19,10 +19,7 @@ class Fixed {
 
         ~Fixed();
 
-        friend std::ostream& operator<<(std::ostream &out, const Fixed& n) {
-            return (out << n.toFloat());
-        }
-
+        friend std::ostream& operator<<(std::ostream &out, const Fixed& n) {return (out << n.toFloat());}
 
         int getRawBits() const;
         void setRawBits(int const raw);

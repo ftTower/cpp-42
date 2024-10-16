@@ -121,9 +121,7 @@ class Fixed {
 
         //----------------output//
 
-        friend std::ostream& operator<<(std::ostream& out, const Fixed& n) {
-            return out << n.toFloat();
-        }
+        friend std::ostream& operator<<(std::ostream& out, const Fixed& n) {return out << n.toFloat();}
 
         //------------------functions------------------------//
 
