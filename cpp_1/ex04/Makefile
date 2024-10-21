@@ -2,7 +2,7 @@ BUILD_DIR	=	build
 NAME		=	sed
 CFLAG		=	-Wall -Wextra -Werror -g3 -std=c++98 
 
-SRC			=	main.cpp 
+SRC			=	main.cpp fileProcess.cpp
 			
 CC			=	g++
 

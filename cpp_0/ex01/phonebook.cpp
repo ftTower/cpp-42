@@ -8,32 +8,35 @@ void    PhoneBook::addContact(const Contact &contact)
     int pos = index % MAX_CONTACTS;
     contacts[pos] = contact;
     if (index == MAX_CONTACTS - 1)
-        index = 0;
+        index = -1;
     if (totalContacts < MAX_CONTACTS)
         totalContacts++;
     index++;
+}
+
+std::string PhoneBook::getInput() const
+{
+    std::string cmd;
+    std::cin >> cmd;
+    if (!cmd.length())
+        std::exit(1);
+    return (cmd);
 }
 
 Contact PhoneBook::getContact() const
 {
     Contact newContact;
     
-    std::string buf;
-    std::cout << "\033c" << "Enter First Name : " << std::endl;
-    std::cin >> buf;
-    newContact.setFirstName(buf);
-    std::cout << "Enter Last Name : " << std::endl;
-    std::cin >> buf;
-    newContact.setLastName(buf);
-    std::cout << "Enter Nick Name : " << std::endl;
-    std::cin >> buf;
-    newContact.setNickName(buf);
-    std::cout << "Enter Phone Number : " << std::endl;
-    std::cin >> buf;
-    newContact.setPhoneNumber(buf);
-    std::cout << "Enter Darkest Secret : " << std::endl;
-    std::cin >> buf;
-    newContact.setDarkestSecret(buf);
+    std::cout << "Please enter the first name of the contact" << std::endl;
+    newContact.setFirstName(getInput());
+    std::cout << "Please enter the last name of the contact" << std::endl;
+    newContact.setLastName(getInput());
+    std::cout << "Please enter the nickname of the contact" << std::endl;
+    newContact.setNickName(getInput());
+    std::cout << "Please enter the phone number of the contact" << std::endl;
+    newContact.setPhoneNumber(getInput());
+    std::cout << "Please enter the darkest secret of the contact" << std::endl;
+    newContact.setDarkestSecret(getInput());
     return (newContact.index = index , newContact);
 }
 
@@ -86,6 +89,8 @@ int    PhoneBook::getSearchPos() const
     
     std::cout <<  "Please enter a number beetwen 0 and " << totalContacts - 1 << std::endl;
     std::cin >> pos;
+    if (!pos.length())
+        std::exit(1);
     for (int index = 0; pos[index]; index++)
     {
         if (!isdigit(pos[index]))

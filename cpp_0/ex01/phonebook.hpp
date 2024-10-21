@@ -4,6 +4,7 @@
 #include "contact.hpp"
 #include <iostream>
 #include <iomanip>
+#include <cstdlib>
 
 #ifndef MAX_CONTACTS
 #define MAX_CONTACTS 8
@@ -26,6 +27,7 @@ public:
     void    displaySearchContacts() const;
     int     getSearchPos() const;
     void    displayContact(int pos) const;
+    std::string getInput() const;
 };
 
 #endif

@@ -3,7 +3,6 @@
 Zombie::Zombie(std::string name) : name(name) {}
 Zombie::Zombie() : name() {}
 
-
 Zombie::~Zombie() {
     std::cout << name << " has been destroyed" << std::endl;
 }

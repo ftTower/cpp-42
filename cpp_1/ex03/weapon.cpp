@@ -10,4 +10,4 @@ Weapon::~Weapon() {
     std::cout << "\033[38;5;196m" + type << " broke...\033[0m" << std::endl; 
 }
 
-std::string Weapon::getType() {return (type);}
+std::string &Weapon::getType() {return (type);}

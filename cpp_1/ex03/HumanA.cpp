@@ -2,7 +2,7 @@
 #include "HumanA.hpp"
 
 HumanA::HumanA(std::string name, Weapon& weapon) : name(name), weaponType(weapon) {
-    // Constructor implementation
+    std::cout << "\033[38;5;50m" + name << " is born\033[0m" << std::endl; 
 }
 
 HumanA::~HumanA() {
@@ -10,5 +10,5 @@ HumanA::~HumanA() {
 }
 
 void    HumanA::attack() {
-    std::cout << "\033[38;5;46m" << name << " attacks with their " << weaponType.getType() << std::endl;
+    std::cout << "\033[38;5;46m" << name << " attack with " << weaponType.getType() << "\033[0m" << std::endl;
 }

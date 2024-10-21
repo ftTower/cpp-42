@@ -12,9 +12,12 @@ int main()
     {
         std::cout << "CHOOSE BETWEEN : " << "ADD SEARCH EXIT" << std::endl;
         std::cin >> cmd;
-        if (cmd == "ADD" || cmd == "add") phoneBook.addContact(phoneBook.getContact()); 
+        if (!cmd.length())
+            return (std::cout << "\033c" << "\033[48;5;160m" << "Invalid input. Please enter a valid command." << std::endl << "\033[0m", 1);
+        else if (cmd == "ADD" || cmd == "add") phoneBook.addContact(phoneBook.getContact()); 
         else if (cmd == "SEARCH" || cmd == "search") phoneBook.searchContact();
         else if (cmd == "EXIT" || cmd == "exit") break;
+        else std::cout << "\033c" << "\033[48;5;160m" << "Invalid input. Please enter a valid command." << std::endl << "\033[0m";
     }
     return (0);
 }
