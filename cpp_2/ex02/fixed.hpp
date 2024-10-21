@@ -71,25 +71,25 @@ class Fixed {
             return (*this);
         }
 
-        friend Fixed operator+(const Fixed& f1, const Fixed& f2) {
+        Fixed operator+(const Fixed& f1, const Fixed& f2) {
             Fixed f3;
             f3.setRawBits(f1.getRawBits() + f2.getRawBits());
             return (f3);
         }
 
-        friend Fixed operator-(const Fixed& f1, const Fixed& f2) {
+        Fixed operator-(const Fixed& f1, const Fixed& f2) {
             Fixed f3;
             f3.setRawBits(f1.getRawBits() - f2.getRawBits());
             return (f3);
         }
 
-        friend Fixed operator*(const Fixed& f1, const Fixed& f2) {
+        Fixed operator*(const Fixed& f1, const Fixed& f2) {
             Fixed f3;
             f3.setRawBits(f1.getRawBits() * f2.getRawBits() >> rawBit);
             return (f3);
         }
 
-        friend Fixed operator/(const Fixed& f1, const Fixed& f2) {
+        Fixed operator/(const Fixed& f1, const Fixed& f2) {
             Fixed f3;
             f3.setRawBits((f1.getRawBits() << rawBit) / f2.getRawBits() );
             return (f3);
@@ -98,30 +98,30 @@ class Fixed {
         //----------------incrementation//
 
         Fixed& operator++() {
-            this->fixedPointValue+=1;
+            this->fixedPointValue++;
             return *this;
         }
 
         Fixed& operator--() {
-            this->fixedPointValue-=1;
+            this->fixedPointValue--;
             return *this;
         }
 
         Fixed operator++(int) {
             Fixed temp = *this;
-            this->fixedPointValue+=1;
+            ++this->fixedPointValue;
             return temp;
         }
 
         Fixed operator--(int) {
             Fixed temp = *this;
-            this->fixedPointValue-=1;
+            --this->fixedPointValue;
             return temp;
         }
 
         //----------------output//
 
-        friend std::ostream& operator<<(std::ostream& out, const Fixed& n) {return out << n.toFloat();}
+        std::ostream& operator<<(std::ostream& out, const Fixed& n) {return out << n.toFloat();}
 
         //------------------functions------------------------//
 

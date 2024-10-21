@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <sstream>
 
 class Fixed {
 
@@ -16,10 +17,7 @@ class Fixed {
         Fixed(const float f);
         Fixed(const Fixed &other);
         Fixed &operator=(const Fixed &other);
-
         ~Fixed();
-
-        friend std::ostream& operator<<(std::ostream &out, const Fixed& n) {return (out << n.toFloat());}
 
         int getRawBits() const;
         void setRawBits(int const raw);
@@ -28,6 +26,7 @@ class Fixed {
         int toInt() const;
 };
 
+std::ostream& operator<<(std::ostream &out, const Fixed& n);
 
 
 #endif

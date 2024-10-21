@@ -17,6 +17,10 @@ Fixed &Fixed::operator=(const Fixed &other) {
     return (*this);
 }
 
+std::ostream& operator<<(std::ostream &out, const Fixed& n) {
+    return (out << n.toFloat());
+}
+
 Fixed::~Fixed () {
     std::cout << "destructor called" << std::endl;
 }
@@ -41,7 +45,6 @@ float Fixed::toFloat() const {
 }
 
 int Fixed::getRawBits() const {return (this->fixedPointValue);}
-
 void Fixed::setRawBits(int const raw) {this->fixedPointValue = raw;}
 
 
