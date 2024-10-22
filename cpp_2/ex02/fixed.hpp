@@ -2,152 +2,66 @@
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
-#include <iostream>
-#include <cmath>
+# include <cmath>
+# include <iostream>
 
-class Fixed {
+class Fixed
+{
+  private:
+	int fixedPointValue;
+	static const int rawBit = 8;
 
-    private:
-        int fixedPointValue;
-        static const int rawBit = 8;
-    public:
+  public:
+	//------------------constructor------------------------//
 
-        //------------------constructor------------------------//
+	Fixed();
+	Fixed(const int n);
+	Fixed(const float f);
+	Fixed(const Fixed &other);
 
-        Fixed();
-        Fixed(const int n);
-        Fixed(const float f);
-        Fixed(const Fixed &other);
+	~Fixed();
 
+	//------------------operator------------------------//
 
-        ~Fixed();
+	//-----------------comparison//
 
-        //------------------operator------------------------//
-        
+	bool operator<(const Fixed &f1) const;
+	bool operator<=(const Fixed &f1) const;
+	bool operator>(const Fixed &f1) const;
+	bool operator>=(const Fixed &f1) const;
+	bool operator==(const Fixed &f1) const;
+	bool operator!=(const Fixed &f1) const;
 
-        //-----------------comparison//
+	//----------------arithmetic//
 
-        friend bool operator<(const Fixed &f1, const Fixed &f2) {
-            if (f1.fixedPointValue < f2.fixedPointValue)
-                return (true);
-            return (false);
-        }
-        
-        friend bool operator<=(const Fixed &f1, const Fixed &f2) {
-            if (f1.fixedPointValue <= f2.fixedPointValue)
-                return (true);
-            return (false);
-        }
-        
-        friend bool operator>(const Fixed &f1, const Fixed &f2) {
-            if (f1.fixedPointValue > f2.fixedPointValue)
-                return (true);
-            return (false);
-        }
-        
-        friend bool operator>=(const Fixed &f1, const Fixed &f2) {
-            if (f1.fixedPointValue >= f2.fixedPointValue)
-                return (true);
-            return (false);
-        }
-        
-        friend bool operator==(const Fixed &f1, const Fixed &f2) {
-            if (f1.fixedPointValue == f2.fixedPointValue)
-                return (true);
-            return (false);
-        }
-        
-        friend bool operator!=(const Fixed &f1, const Fixed &f2) {
-            if (f1.fixedPointValue != f2.fixedPointValue)
-                return (true);
-            return (false);
-        }
+	Fixed &operator=(const Fixed &other);
 
-        //----------------arithmetic//
+	//----------------incrementation//
 
-        Fixed &operator=(const Fixed &other) {
-            if (this != &other)
-                setRawBits(other.getRawBits());
-            return (*this);
-        }
+	Fixed &operator++(void);
+	Fixed &operator--(void);
+	Fixed operator++(int value);
+	Fixed operator--(int value);
 
-        Fixed operator+(const Fixed& f1, const Fixed& f2) {
-            Fixed f3;
-            f3.setRawBits(f1.getRawBits() + f2.getRawBits());
-            return (f3);
-        }
+	//------------------functions------------------------//
 
-        Fixed operator-(const Fixed& f1, const Fixed& f2) {
-            Fixed f3;
-            f3.setRawBits(f1.getRawBits() - f2.getRawBits());
-            return (f3);
-        }
+	int  getRawBits() const;
+	void setRawBits(int const raw);
 
-        Fixed operator*(const Fixed& f1, const Fixed& f2) {
-            Fixed f3;
-            f3.setRawBits(f1.getRawBits() * f2.getRawBits() >> rawBit);
-            return (f3);
-        }
+	float toFloat() const;
+	int   toInt() const;
 
-        Fixed operator/(const Fixed& f1, const Fixed& f2) {
-            Fixed f3;
-            f3.setRawBits((f1.getRawBits() << rawBit) / f2.getRawBits() );
-            return (f3);
-        }
-
-        //----------------incrementation//
-
-        Fixed& operator++() {
-            this->fixedPointValue++;
-            return *this;
-        }
-
-        Fixed& operator--() {
-            this->fixedPointValue--;
-            return *this;
-        }
-
-        Fixed operator++(int) {
-            Fixed temp = *this;
-            ++this->fixedPointValue;
-            return temp;
-        }
-
-        Fixed operator--(int) {
-            Fixed temp = *this;
-            --this->fixedPointValue;
-            return temp;
-        }
-
-        //----------------output//
-
-        std::ostream& operator<<(std::ostream& out, const Fixed& n) {return out << n.toFloat();}
-
-        //------------------functions------------------------//
-
-        int getRawBits() const;
-        void setRawBits(int const raw);
-
-        float toFloat() const;
-        int toInt() const;
-
-        static Fixed &min(Fixed &a, Fixed &b) {
-            return (a < b) ? a : b;
-        }
-        
-        static const Fixed &min(const Fixed &a,const  Fixed &b) {
-            return (a < b) ? a : b;
-        }
-        
-        static Fixed &max(Fixed &a, Fixed &b) {
-            return (a > b) ? a : b;
-        }
-        
-        static const Fixed &max(const Fixed &a,const  Fixed &b) {
-            return (a > b) ? a : b;
-        }
+	static Fixed &min(Fixed &a, Fixed &b);
+	static const Fixed &min(const Fixed &a, const Fixed &b);
+	static Fixed &max(Fixed &a, Fixed &b);
+	static const Fixed &max(const Fixed &a, const Fixed &b);
 };
 
+std::ostream &operator<<(std::ostream &out, const Fixed &n);
 
+Fixed operator/(const Fixed &f1, const Fixed &f2);
+Fixed operator*(const Fixed &f1, const Fixed &f2);
+Fixed operator-(const Fixed &f1, const Fixed &f2);
+Fixed operator+(const Fixed &f1, const Fixed &f2);
 
 #endif

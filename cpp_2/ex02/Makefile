@@ -2,7 +2,7 @@ BUILD_DIR	=	build
 NAME		=	Fixed
 CFLAG		=	-Wall -Wextra -Werror -g3 -std=c++98 
 
-SRC			=	main.cpp fixed.cpp
+SRC			=	main.cpp fixed.cpp fixedOperator.cpp
 			
 CC			=	g++
 
