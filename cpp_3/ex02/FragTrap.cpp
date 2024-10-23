@@ -5,11 +5,11 @@ FragTrap::FragTrap(const std::string& name) : ClapTrap(name) {
     setHitPoints(100);
     setEnergyPoints(50);
     setAttackDamage(20);
-    std::cout << name << " ScavTrap constructor called" << std::endl;
+    std::cout << name << " constructor(Fragtrap) called" << std::endl;
 }
 
 FragTrap::~FragTrap() {
-    std::cout << "FragTrap destructor called" << std::endl;
+    std::cout << name << "destructor(Fragtrap) called" << std::endl;
 }
 
 void FragTrap::attack(const std::string &target) {

@@ -15,6 +15,7 @@ int main() {
     scavtrap.guardGate();
     claptrap.beRepaired(20);
     scavtrap.beRepaired(20);
+    scavtrap.takeDamage(20);
 
     return 0;
 }

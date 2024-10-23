@@ -6,11 +6,11 @@ ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name) {
     setHitPoints(100);
     setEnergyPoints(50);
     setAttackDamage(20);
-    std::cout << name << " ScavTrap constructor called" << std::endl;
+    std::cout << name << " constructor(Scavtrap) called" << std::endl;
 }
 
 ScavTrap::~ScavTrap() {
-    std::cout << "ScavTrap destructor called" << std::endl;
+    std::cout << name << "destructorScavTrap(ScavTrap) called" << std::endl;
 }
 
 void ScavTrap::attack(const std::string &target) {

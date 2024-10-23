@@ -15,10 +15,10 @@ class   ClapTrap {
     public :
         ClapTrap(const std::string name) : \
             name(name), hitPoints(10), attackDamage(0), energyPoints(10) {
-            std::cout << name << " constructor called" <<std::endl;
+            std::cout << name << " constructor(Claptrap) called" <<std::endl;
         };
         virtual ~ClapTrap() {
-            std::cout << "destructor called" <<std::endl;
+            std::cout << name << "destructor called(Claptrap)" <<std::endl;
         };
         
         void    attack(const std::string &target);

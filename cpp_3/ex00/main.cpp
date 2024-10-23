@@ -6,7 +6,7 @@
 #include <iostream>
 
 int main() {
-    // Create two ClapTrap instances with Star Wars names
+    // Create two ClapTrap instances with Star Wars name
     ClapTrap vader("Darth Vader");
     ClapTrap luke("Luke Skywalker");
 
@@ -32,7 +32,7 @@ int main() {
         vader.attack("Luke Skywalker");
     }
 
-    // Luke Skywalker takes more damage until he "dies"
+    // Luke Skywalker takes more damage until he dies
     std::cout << "\nLuke Skywalker takes damage until he has no hit points left:\n";
     for (int i = 0; i < 10; ++i) {
         luke.takeDamage(1);

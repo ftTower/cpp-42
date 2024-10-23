@@ -17,9 +17,7 @@ class   ClapTrap {
             name(name), hitPoints(10), attackDamage(0), energyPoints(10) {
             std::cout << name << " constructor called" <<std::endl;
         };
-        ~ClapTrap() {
-            std::cout << "destructor called" <<std::endl;
-        };
+        ~ClapTrap() {std::cout << "destructor called" <<std::endl;};
         
         void    attack(const std::string &target);
         void    takeDamage(unsigned int amount);
