@@ -1,82 +1,55 @@
 #ifndef ANIMAL_HPP
 # define ANIMAL_HPP
 
-#include <iostream>
+# include <iostream>
 
-class Animal {
-    protected :
-    std::string type;
-    
-    public:
+class Animal
+{
+  protected:
+	std::string type;
 
-    Animal() {
-        std::cout << "Animal constructor called" << std::endl<< std::endl;
-    };
-    virtual ~Animal() {
-        std::cout << "Animal deconstructor called" << std::endl;
-    };
-
-    virtual void    makeSound() const = 0;
-
-    std::string getType() const{
-        return (type);
-    }
-    void    kill() const {
-        delete(this);
-    }
+  public:
+	Animal();
+	virtual ~Animal();
+	virtual void makeSound() const = 0;
+	std::string getType() const;
+	void kill() const;
 };
 
-class Brain {
-    public :
-    std::string ideas[100];
-
-};
-
-class Dog : public Animal {
-
+class Brain
+{
     public:
-    
-    Dog() {
-        type = "Dog";
-        brain = new(Brain);
-        std::cout << "Dog constructor called" << std::endl<< std::endl;
-    }
-    
-    virtual ~Dog() {
-        delete(brain);
-        std::cout << "Dog deconstructor called" << std::endl;
-    }
-
-    void    makeSound() const{
-        std::cout << "WOUF WOUF WOUF ARGRRRRRRRR" << std::endl;
-    }
-
+    Brain();
+    Brain(Brain const &copy);
+    ~Brain();
     private:
-    Brain *brain;
+	std::string ideas[100];
 };
 
-class Cat : public Animal {
+class Dog : public Animal
+{
+  public:
+	Dog();
+    Dog(const Dog &copy);
+	virtual ~Dog();
+	void makeSound() const;
+    Dog &operator=(const Dog &copy);
 
-    public:
-    
-    Cat() {
-        type = "Cat";
-        brain = new(Brain);
-        std::cout << "Cat constructor called" << std::endl<< std::endl;
-    }
-    
-    virtual ~Cat() {
-        delete(brain);
-        std::cout << "Cat deconstructor called" << std::endl;
-    }
-
-    void    makeSound() const{
-        std::cout << "MMrrrRaouuuuw" << std::endl;
-    }
-
-    private:
-    Brain *brain;
+  private:
+	Brain *brain;
 };
 
+class Cat : public Animal
+{
+  public:
+	Cat();
+	virtual ~Cat();
+    Cat(const Cat &copy);
+	void makeSound() const;
+    Cat &operator=(const Cat &copy);
+
+  private:
+	Brain *brain;
+};
 
 #endif

@@ -1,7 +1,7 @@
 
 #include "wrongAnimal.hpp"
 
-int main()
+void    Animal_half()
 {
     const Animal* j = new Dog();
     const Animal* i = new Cat();
@@ -9,8 +9,8 @@ int main()
     delete j;
     delete i;
 
-    Animal *tab[100];
-    for(size_t i = 0; i < 100; i++)
+    Animal *tab[50];
+    for(size_t i = 0; i < 50; i++)
     {
         if (!(i % 2))
             tab[i] = new Dog();
@@ -18,11 +18,31 @@ int main()
             tab[i] = new Cat();
     }
 
-    for(size_t i = 0; i < 100; i++)
+    for(size_t i = 0; i < 50; i++)
     {
         tab[i]->makeSound();
         delete tab[i];
     }
+}
+
+void    copy_profonde()
+{
+    Dog Basic;
+    {
+        Dog tmp = Basic;
+    }
+    Cat Basic2;
+    {
+        Cat tmp = Basic2;
+    }
+}
+
+int main()
+{
+
+    Animal_half();
+
+    copy_profonde();
     
 
     return (0);

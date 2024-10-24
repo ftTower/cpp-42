@@ -2,7 +2,7 @@ BUILD_DIR	=	build
 NAME		=	Animal
 CFLAG		=	-Wall -Wextra -Werror -g3 -std=c++98 
 
-SRC			=	main.cpp
+SRC			=	main.cpp animal.cpp wrongAnimal.cpp
 			
 CC			=	g++
 

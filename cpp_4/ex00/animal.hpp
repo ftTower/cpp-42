@@ -1,68 +1,38 @@
 #ifndef ANIMAL_HPP
 # define ANIMAL_HPP
 
-#include <iostream>
+# include <iostream>
 
-class Animal {
-    protected :
-    std::string type;
-    
-    public:
+class Animal
+{
+  protected:
+	std::string type;
 
-    Animal() {
-        std::cout << "Animal constructor called" << std::endl<< std::endl;
-    };
-    virtual ~Animal() {
-        std::cout << "Animal deconstructor called" << std::endl;
-    };
+  public:
+	Animal();
+	virtual ~Animal();
 
-    virtual void    makeSound() const {
-        std::cout << "Animal sound" << std::endl;
-    }
-    std::string getType() const{
-        return (type);
-    }
-    void    kill() const
-    {
-        delete(this);
-    }
+	virtual void makeSound() const;
+	std::string getType() const;
+	void kill() const;
 };
 
-class Dog : public Animal {
+class Dog : public Animal
+{
+  public:
+	Dog();
+	virtual ~Dog();
 
-    public:
-    
-    Dog() {
-        type = "Dog";
-        std::cout << "Dog constructor called" << std::endl<< std::endl;
-    }
-    
-    virtual ~Dog() {
-        std::cout << "Dog deconstructor called" << std::endl;
-    }
-
-    void    makeSound() const{
-        std::cout << "WOUF WOUF WOUF ARGRRRRRRRR" << std::endl;
-    }
+	void makeSound(void) const;
 };
 
-class Cat : public Animal {
+class Cat : public Animal
+{
+  public:
+	Cat();
+	virtual ~Cat();
 
-    public:
-    
-    Cat() {
-        type = "Cat";
-        std::cout << "Cat constructor called" << std::endl<< std::endl;
-    }
-    
-    virtual ~Cat() {
-        std::cout << "Cat deconstructor called" << std::endl;
-    }
-
-    void    makeSound() const{
-        std::cout << "MMrrrRaouuuuw" << std::endl;
-    }
+	void makeSound(void) const;
 };
-
 
 #endif
