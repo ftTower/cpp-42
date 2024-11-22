@@ -11,24 +11,24 @@ typedef enum e_type {
 } t_type;
 
 t_type	parseLiteral(const std::string &literal) {
-	std::cout << "\x1b[7m";
+	std::cout << "[" << "\033[32m" << literal << " \033[0m\033[31m";
 	if (literal.length() == 1 && !isdigit(literal[0]))
-		return (std::cout << "[CHAR]\033[0m", CHAR);
+		return (std::cout << "CHAR]\033[0m", CHAR);
 	else if (literal.find(".") != std::string::npos) {
 		if (literal[literal.size() - 1] == 'f')
-			return (std::cout << "[FLOAT]\033[0m" ,FLOAT);
+			return (std::cout << "FLOAT]\033[0m" ,FLOAT);
 		else
-			return (std::cout << "[DOUBLE]\033[0m",DOUBLE);
+			return (std::cout << "DOUBLE]\033[0m",DOUBLE);
 	}
 	else if (literal == "-inff" || literal == "+inff" || literal == "nanf")
-		return (std::cout << "[FLOAT PSEUDO]\033[0m", FLOAT_PSEUDO);
+		return (std::cout << "FLOAT PSEUDO]\033[0m", FLOAT_PSEUDO);
 	else if (literal == "-inf" || literal == "+inf" || literal == "nan")
-		return (std::cout << "[DOUBLE PSEUDO]\033[0m", DOUBLE_PSEUDO);
-	return (std::cout << "[INT]\033[0m",INT);
+		return (std::cout << "DOUBLE PSEUDO]\033[0m", DOUBLE_PSEUDO);
+	return (std::cout << "INT]\033[0m",INT);
 }
 
 void	printChar(t_type type, const std::string &literal) {
-	std::cout << "char  : ";
+	std::cout << "|char  :\t";
 	
 	int value = 0;
 	char buf;
@@ -59,11 +59,21 @@ void	printChar(t_type type, const std::string &literal) {
 }
 
 void	printInt(t_type type, const std::string &literal) {
-	
+	int value = 0;
+	std::cout << "|int   :\t";
+	if (type == INT)
+		value = atoi(literal.c_str());
+	else if (type == DOUBLE)
+		value = (int)strtod(literal.c_str(), NULL);
+	else if (type == FLOAT)
+		value = (int)strtof(literal.c_str(), NULL);
+	else
+		return (std::cout << "impossible" << std::endl, (void)NULL);
+	std::cout << value << std::endl;
 }
 
 void	printFloat(t_type type, const std::string &literal) {
-	std::cout << "float : ";
+	std::cout << "|float :\t";
 	if (type == FLOAT || type == INT || type == DOUBLE)
 		std::cout << strtof(literal.c_str(), NULL);
 	else if (type == CHAR)
@@ -77,28 +87,32 @@ void	printFloat(t_type type, const std::string &literal) {
 	std::cout << "f" << std::endl;
 }
 
+void	printDouble(t_type type, const std::string &literal) {
+	std::cout << "|double :\t";
+	if (type == FLOAT || type == INT || type == DOUBLE)
+		std::cout << strtod(literal.c_str(), NULL);
+	else if (type == CHAR)
+		std::cout << (float)literal[0];
+	else if (type == DOUBLE_PSEUDO && (literal == "inf" || literal == "+inf"))
+		std::cout << std::numeric_limits<double>::infinity();
+	else if (type == DOUBLE_PSEUDO && literal == "-inf")
+		std::cout << -std::numeric_limits<double>::infinity();
+	else if (type == DOUBLE_PSEUDO && literal == "nan")
+		std::cout << nanf("");
+	std::cout << std::endl;
+}
+
 void	ScalarConverter::convert(const std::string &literal) {
 	std::cout << "===========";
 	t_type type = parseLiteral(literal);
 	std::cout << "===========" << std::endl;
 	
 	printChar(type, literal);
+	printInt(type, literal);
+	printDouble(type, literal);
 	printFloat(type, literal);
-
 	
-	//for(size_t i = 0; literal[i]; i++)
-	//	if ((!i && literal[i] != '-' && !isdigit(literal[i])))
-	//		return (std::cout << "Failed to convert string" << std::endl, (void)NULL);
-
-	//std::cout << "int  : " << value << std::endl;
+	std::cout << std::endl;
 	
-	
-	//if (!isdigit(atoi(literal.c_str())))
-	//	std::cout << atoi(literal.c_str()) << std::endl;
-	//else
-	//	std::cout << "Non printable" << std::endl;
-	//std::cout << "int   : " << atoi(literal.c_str()) << std::endl;
-	//std::cout << "float : " << strtof(literal.c_str(), NULL) << std::endl;
-	//std::cout << "double: " << strtod(literal.c_str(), NULL) << std::endl;
 }
 
