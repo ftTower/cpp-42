@@ -61,8 +61,13 @@ void	printChar(t_type type, const std::string &literal) {
 void	printInt(t_type type, const std::string &literal) {
 	int value = 0;
 	std::cout << "|int   :\t";
-	if (type == INT)
+	if (type == INT) {
+		if ((strtol(literal.c_str(), NULL, 10) > std::numeric_limits<int>::max()) || (strtol(literal.c_str(), NULL, 10) < std::numeric_limits<int>::min()))
+			return (std::cout << "too large for a int" << std::endl, (void)NULL);	
 		value = atoi(literal.c_str());
+	}
+	else if (type == CHAR)
+		value = (int)literal[0];
 	else if (type == DOUBLE)
 		value = (int)strtod(literal.c_str(), NULL);
 	else if (type == FLOAT)
@@ -75,16 +80,16 @@ void	printInt(t_type type, const std::string &literal) {
 void	printFloat(t_type type, const std::string &literal) {
 	std::cout << "|float :\t";
 	if (type == FLOAT || type == INT || type == DOUBLE)
-		std::cout << strtof(literal.c_str(), NULL);
+		std::cout << strtof(literal.c_str(), NULL) << "f";
 	else if (type == CHAR)
-		std::cout << (float)literal[0];
+		std::cout << (float)literal[0] << "f";
 	else if (type == FLOAT_PSEUDO && (literal == "inff" || literal == "+inff"))
-		std::cout << std::numeric_limits<float>::infinity();
+		std::cout << "+inff";
 	else if (type == FLOAT_PSEUDO && literal == "-inff")
-		std::cout << -std::numeric_limits<float>::infinity();
+		std::cout << "-inff";
 	else if (type == FLOAT_PSEUDO && literal == "nanf")
-		std::cout << nanf("");
-	std::cout << "f" << std::endl;
+		std::cout << "nanf";
+	std::cout  << std::endl;
 }
 
 void	printDouble(t_type type, const std::string &literal) {
@@ -94,11 +99,11 @@ void	printDouble(t_type type, const std::string &literal) {
 	else if (type == CHAR)
 		std::cout << (float)literal[0];
 	else if (type == DOUBLE_PSEUDO && (literal == "inf" || literal == "+inf"))
-		std::cout << std::numeric_limits<double>::infinity();
+		std::cout << "+inf";
 	else if (type == DOUBLE_PSEUDO && literal == "-inf")
-		std::cout << -std::numeric_limits<double>::infinity();
+		std::cout << "-inf";
 	else if (type == DOUBLE_PSEUDO && literal == "nan")
-		std::cout << nanf("");
+		std::cout << "nan";
 	std::cout << std::endl;
 }
 
