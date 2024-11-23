@@ -4,7 +4,7 @@ EXECNAME="./Serializer" # Nom de l'exécutable à tester
 
 # Rebuild the project
 make re
-
+clear
 # Basic name tests
 $EXECNAME "Alice"
 $EXECNAME "Bob"
@@ -67,3 +67,4 @@ $EXECNAME "" "-" "123"
 
 # Optional: Add a summary of tests
 echo "All name-based tests completed. Please check the output for correctness."
+make fclean

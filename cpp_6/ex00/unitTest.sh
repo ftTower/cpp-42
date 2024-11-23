@@ -4,6 +4,7 @@ EXECNAME="./ScalarConverter"
 
 # Rebuild the project
 make re
+clear
 
 # Basic integer tests
 $EXECNAME 0
@@ -75,3 +76,4 @@ $EXECNAME "--nan"
 
 # Optional: Add a summary of tests
 echo "All tests completed. Please check output for correctness."
+make fclean
