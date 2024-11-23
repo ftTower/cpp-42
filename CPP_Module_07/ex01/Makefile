@@ -1,8 +1,8 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = main.cpp Base.cpp
+SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
-NAME = Base
+NAME = Array
 .SILENT:
 
 all: $(NAME)
