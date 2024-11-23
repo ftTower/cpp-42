@@ -1,6 +1,5 @@
 
 #include "ScalarConverter.hpp"
-
 typedef enum e_type {
 	CHAR,
 	INT,
