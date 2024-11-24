@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:43:45 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/24 02:39:35 by tauer            ###   ########.fr       */
+/*   Updated: 2024/11/24 03:20:39 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ template <typename T> class Array
 		return (arr[index]);
 	}
 
-	void setT(T *ptr, size_t pos)
+	void setT(T ptr, size_t pos)
 	{
-		if (!ptr || !this->arr || pos >= size)
+		if (!ptr || !this->arr || pos >= size())
 			return ;
-		this->arr[pos] = *ptr;
+		this->arr[pos] = ptr;
 	}
 
 	T *getT()
@@ -76,7 +76,7 @@ template <typename T> class Array
 	{
 		if (!getT())
 			return ;
-		for (size_t i = 0; i < size; i++)
+		for (size_t i = 0; i < size(); i++)
 			std::cout << "[" << i << ":" << arr[i] << "]" << " ";
 		std::cout << std::endl;
 	}
