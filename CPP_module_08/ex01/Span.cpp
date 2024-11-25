@@ -6,11 +6,12 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 21:45:00 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/24 23:37:36 by tauer            ###   ########.fr       */
+/*   Updated: 2024/11/25 01:30:31 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+#include <algorithm>
 
 Span::~Span() {
 	delete[] arr;
@@ -49,18 +50,22 @@ void Span::addNumber(int N) {
 	_incrIndex();
 }
 
-int	Span::shortestSpan() const {
+long getDist(int n1, int n2) {
+    return abs(n1 - n2);
+}
+
+long	Span::shortestSpan() const {
 	
 	unsigned int pos1 = 0;
 	unsigned int pos2 = 0;
-	int	shortSpan = __INT_MAX__;
-	int tmp;
+	long	shortSpan = __LONG_MAX__;
+	long 	tmp;
 
+	if (!arr || _index() < 2 || arr[0] == arr[1])
+		throw std::runtime_error("Cannot found shortest with < 1 int !");
 	for (unsigned int i = 0; i < _index(); i++) {
 		for (unsigned int y = 0; y < _index(); y++) {
-			tmp = arr[i] - arr[y];
-			if (tmp < 0)
-				tmp *= -1;
+			tmp = getDist(arr[i], arr[y]);
 			if (tmp < shortSpan && i != y) {
 				shortSpan = tmp;
 				pos1 = i;
@@ -75,7 +80,34 @@ int	Span::shortestSpan() const {
 	std::cout << std::right << std::setw(7) << pos2 << " |\t" << arr[pos2] << std::endl;
 	std::cout << "[\033[38;5;196mMin distance\033[0m : " << shortSpan << "]" << std::endl;
 	std::cout << "==============================================" << std::endl;
-	return (tmp); 
+	return (shortSpan); 
+}
+
+int	Span::biggestSpan() const {
+	
+	unsigned int pos1 = 0;
+	unsigned int pos2 = 0;
+	int	BigSpan = 0;
+	int tmp;
+
+	if (!arr || _index() < 2 || arr[0] == arr[1])
+		throw std::runtime_error("Cannot found biggest with < 1 int !");
+	for (unsigned int i = 0; i < _index(); i++) {
+		for (unsigned int y = 0; y < _index(); y++) {
+			tmp = getDist(arr[i], arr[y]);
+			if (tmp > BigSpan && i != y) {
+				BigSpan = tmp;
+				pos1 = i;
+				pos2 = y;
+			}
+		}
+	}
+	std::cout << "==============================================" << std::endl;
+	std::cout << std::right << std::setw(7) << pos1 << " |\t" << arr[pos1] << std::endl;
+	std::cout << std::right << std::setw(7) << pos2 << " |\t" << arr[pos2] << std::endl;
+	std::cout << "[\033[38;5;196mMax distance\033[0m : " << BigSpan << "]" << std::endl;
+	std::cout << "==============================================" << std::endl;
+	return (BigSpan); 
 }
 
 std::ostream &operator<<(std::ostream &out, const Span &arr)
@@ -83,7 +115,7 @@ std::ostream &operator<<(std::ostream &out, const Span &arr)
 	out << "[" << arr._index() << "/" << arr._len() << "]" << std::endl;
 	out << "==============================================" << std::endl;
 	for (unsigned int i = 0; i < arr._len(); i++) {
-		if (i >= arr._index() + 5) {
+		if (i >= arr._index() + 5 || i > 10) {
 			out << "    ... |\t..." << std::endl;
 			break ;
 		}
@@ -99,6 +131,7 @@ std::ostream &operator<<(std::ostream &out, const Span &arr)
 		}
 	}
 	arr.shortestSpan();
+	arr.biggestSpan();
 	return (out);
 }
 

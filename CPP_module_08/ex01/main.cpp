@@ -6,26 +6,30 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 21:39:50 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/24 23:35:41 by tauer            ###   ########.fr       */
+/*   Updated: 2024/11/25 00:56:07 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
-int	main(void)
+// ./Span shortest distance biggest distance numbers.. 
+
+int	main(int argc, char **argv)
 {
-	Span sp = Span(100);
+	if (argc < 2)
+		return (std::cerr << "not enough args !" << std::endl, 1);
+	(void)argv;
+	
+	Span sp = Span(argc - 1);
+	
 	try {
-		sp.addNumber(6);
-		sp.addNumber(11);
-		sp.addNumber(3);
-		sp.addNumber(17);
-		sp.addNumber(9);
+		for(unsigned int i = 1; argv[i]; i++)
+			sp.addNumber(atoi(argv[i]));
+		std::cout << sp;
 		
 	} catch (std::exception & e) {
 		std::cerr << "Caught exeption :" << e.what() << std::endl;
 	}
 	
-	std::cout << sp;
 	return (0);
 }
