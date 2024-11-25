@@ -6,13 +6,13 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 21:45:00 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/25 01:30:31 by tauer            ###   ########.fr       */
+/*   Updated: 2024/11/25 02:19:43 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 #include <algorithm>
-
+#include <vector>
 Span::~Span() {
 	delete[] arr;
 }
@@ -56,57 +56,39 @@ long getDist(int n1, int n2) {
 
 long	Span::shortestSpan() const {
 	
-	unsigned int pos1 = 0;
-	unsigned int pos2 = 0;
-	long	shortSpan = __LONG_MAX__;
-	long 	tmp;
 
 	if (!arr || _index() < 2 || arr[0] == arr[1])
 		throw std::runtime_error("Cannot found shortest with < 1 int !");
-	for (unsigned int i = 0; i < _index(); i++) {
-		for (unsigned int y = 0; y < _index(); y++) {
-			tmp = getDist(arr[i], arr[y]);
-			if (tmp < shortSpan && i != y) {
-				shortSpan = tmp;
-				pos1 = i;
-				pos2 = y;
-				if (!shortSpan)
-					break;
-			}
+	
+	long	shortSpan = __LONG_MAX__;	
+	
+	std::vector<int> sortedArr(arr, arr + _index());
+	std::sort(sortedArr.begin(), sortedArr.end());
+
+	
+	for (unsigned int i = 0; i < sortedArr.size() - 1; i++) {
+		long tmp = getDist(sortedArr[i], sortedArr[i + 1]);
+		if (tmp < shortSpan) {
+			shortSpan = tmp;
 		}
 	}
-	std::cout << "==============================================" << std::endl;
-	std::cout << std::right << std::setw(7) << pos1 << " |\t" << arr[pos1] << std::endl;
-	std::cout << std::right << std::setw(7) << pos2 << " |\t" << arr[pos2] << std::endl;
-	std::cout << "[\033[38;5;196mMin distance\033[0m : " << shortSpan << "]" << std::endl;
-	std::cout << "==============================================" << std::endl;
+	
+	std::cout <<"[\033[38;5;196mMin distance\033[0m : " << shortSpan << "]" << std::endl;
 	return (shortSpan); 
 }
 
 int	Span::biggestSpan() const {
 	
-	unsigned int pos1 = 0;
-	unsigned int pos2 = 0;
-	int	BigSpan = 0;
-	int tmp;
+	long	BigSpan = 0;
 
 	if (!arr || _index() < 2 || arr[0] == arr[1])
 		throw std::runtime_error("Cannot found biggest with < 1 int !");
-	for (unsigned int i = 0; i < _index(); i++) {
-		for (unsigned int y = 0; y < _index(); y++) {
-			tmp = getDist(arr[i], arr[y]);
-			if (tmp > BigSpan && i != y) {
-				BigSpan = tmp;
-				pos1 = i;
-				pos2 = y;
-			}
-		}
-	}
-	std::cout << "==============================================" << std::endl;
-	std::cout << std::right << std::setw(7) << pos1 << " |\t" << arr[pos1] << std::endl;
-	std::cout << std::right << std::setw(7) << pos2 << " |\t" << arr[pos2] << std::endl;
+	
+	int minElement = *std::min_element(arr, arr + _index());
+	int maxElement = *std::max_element(arr, arr + _index());
+	BigSpan = getDist(minElement, maxElement);
+
 	std::cout << "[\033[38;5;196mMax distance\033[0m : " << BigSpan << "]" << std::endl;
-	std::cout << "==============================================" << std::endl;
 	return (BigSpan); 
 }
 
@@ -130,6 +112,7 @@ std::ostream &operator<<(std::ostream &out, const Span &arr)
 			std::cerr << arr._len() << " " << arr._index() << " " << "Caught exception : " << e.what() << std::endl;
 		}
 	}
+	std::cout << std::endl;
 	arr.shortestSpan();
 	arr.biggestSpan();
 	return (out);
