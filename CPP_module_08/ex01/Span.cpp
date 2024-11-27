@@ -6,13 +6,12 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 21:45:00 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/25 18:02:09 by tauer            ###   ########.fr       */
+/*   Updated: 2024/11/27 01:10:39 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 #include <algorithm>
-#include <vector>
 
 Span::~Span()
 {
