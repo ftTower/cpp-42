@@ -6,15 +6,13 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:33:57 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/27 17:19:31 by tauer            ###   ########.fr       */
+/*   Updated: 2024/11/27 19:22:05 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "./BitcoinExchange.hpp"
 
-// Assuming Btc is a function declared in BitcoinExchange.hpp
-// void Btc(const char* path);
 
 int		main(int argc, char **argv) {
 	if (argc != 2) {

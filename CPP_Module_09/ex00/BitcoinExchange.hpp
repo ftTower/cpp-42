@@ -6,42 +6,20 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:33:40 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/27 17:44:39 by tauer            ###   ########.fr       */
+/*   Updated: 2024/11/27 19:21:43 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <vector>
-#include <fstream>
-#include <algorithm>
+#include "CryptoRate.hpp"
 
-#define RED "\033[38;5;196m"
-#define END "\033[0m"
+class Btc
+{
+  private:
+	std::vector<CryptoRate> arr;
+	Btc();
 
-
-
-class CryptoRate {
-		
-	private :
-		std::string &data;
-		
-	public :
-		CryptoRate(std::string &inputData);
-		~CryptoRate();
-		unsigned int getYear();
-		unsigned int getMonth();
-		unsigned int getDay();
-		float getrate();
+  public:
+	Btc(const std::string &inputFile);
+	~Btc();
 };
 
-class Btc {
-
-	private :
-		std::vector<CryptoRate> arr;
-		Btc();
-		
-	public :
-		Btc(const std::string &inputFile);
-		~Btc();
-		
-};
