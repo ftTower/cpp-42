@@ -6,12 +6,23 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:52:43 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/27 21:46:41 by tauer            ###   ########.fr       */
+/*   Updated: 2024/11/28 17:38:39 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 #include <limits>
+
+unsigned int getNearestDate(std::vector<CryptoRate> arr, CryptoRate &input) {
+	(void)input;
+	(void)arr;
+
+	unsigned diff = input.getYear() + input.getMonth() + input.getDay();
+
+	return (0);
+}
+
+
 
 Btc::~Btc() {
 	
@@ -61,7 +72,7 @@ Btc::Btc(const std::string &inputFile) : arr() {
 		try {
 			CryptoRate cur(line, index++);
 			
-			std::cout << cur << std::endl;
+			std::cout << cur << "\t" << arr[getNearestDate(arr, cur)]<<  std::endl;
 		} catch (std::exception &e){
 			std::cerr << RED << "ERROR: l." << index << " " << inputFile << " : " << END  << e.what() << std::endl;
 		}

@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 19:19:18 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/27 21:39:17 by tauer            ###   ########.fr       */
+/*   Updated: 2024/11/28 17:29:19 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ class CryptoRate
 	unsigned int getDay();
 	float 		 getRate();
 	std::string  getData();
-	
-	unsigned int getNearestRate(std::vector<CryptoRate> arr);
 };
 
 std::ostream& operator<<(std::ostream& os, const CryptoRate& rate);

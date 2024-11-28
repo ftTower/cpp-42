@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:26:18 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/27 21:45:54 by tauer            ###   ########.fr       */
+/*   Updated: 2024/11/28 17:34:29 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,3 @@ float CryptoRate::getRate() {
 std::string CryptoRate::getData() {
 	return (data);
 }
-
-unsigned int CryptoRate::getNearestRate(std::vector<CryptoRate> arr) {
-
-	unsigned int pos = 5;
-	
-	(void)arr;
-	
-	return (pos);
-}
-
