@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 19:19:18 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/28 17:29:19 by tauer            ###   ########.fr       */
+/*   Updated: 2024/11/29 01:10:45 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <cmath>
 
 #define RED "\033[38;5;196m"
 #define GREEN "\033[38;5;34m"
@@ -37,7 +38,9 @@ class CryptoRate
 	unsigned int getMonth();
 	unsigned int getDay();
 	float 		 getRate();
+
 	std::string  getData();
+	
 };
 
 std::ostream& operator<<(std::ostream& os, const CryptoRate& rate);

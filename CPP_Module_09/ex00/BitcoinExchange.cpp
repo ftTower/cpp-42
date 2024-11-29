@@ -6,23 +6,33 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:52:43 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/28 17:38:39 by tauer            ###   ########.fr       */
+/*   Updated: 2024/11/29 01:20:01 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 #include <limits>
 
-unsigned int getNearestDate(std::vector<CryptoRate> arr, CryptoRate &input) {
-	(void)input;
-	(void)arr;
-
-	unsigned diff = input.getYear() + input.getMonth() + input.getDay();
-
-	return (0);
+int dateToDays(CryptoRate &date) {
+	return (date.getYear() * 365 + date.getMonth() * 30 + date.getDay());
 }
 
+unsigned int getNearestDate(std::vector<CryptoRate> arr, CryptoRate &input) {
+	if (arr.empty())
+		return -1;
+	int inputDays = dateToDays(input);
+	unsigned int nearestIndex = 0;
+	int smallestDiff = std::abs(dateToDays(arr[0]) - inputDays);
 
+	for(unsigned int i = 1; i < arr.size(); ++i) {
+		int currentDiff = std::abs(dateToDays(arr[i]) - inputDays);
+		if (currentDiff < smallestDiff) {
+			smallestDiff = currentDiff;
+			nearestIndex = i;
+		}
+	}
+	return (nearestIndex);
+}
 
 Btc::~Btc() {
 	
@@ -72,7 +82,7 @@ Btc::Btc(const std::string &inputFile) : arr() {
 		try {
 			CryptoRate cur(line, index++);
 			
-			std::cout << cur << "\t" << arr[getNearestDate(arr, cur)]<<  std::endl;
+			std::cout << cur << "\t> " << arr[getNearestDate(arr, cur)]<<  std::endl;
 		} catch (std::exception &e){
 			std::cerr << RED << "ERROR: l." << index << " " << inputFile << " : " << END  << e.what() << std::endl;
 		}
