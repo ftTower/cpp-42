@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 19:19:18 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/29 01:10:45 by tauer            ###   ########.fr       */
+/*   Updated: 2024/11/29 23:08:26 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,24 @@
 #include <vector>
 #include <string>
 #include <cmath>
+#include <iomanip>
+#include <limits>
 
 #define RED "\033[38;5;196m"
 #define GREEN "\033[38;5;34m"
 #define YELLOW "\033[38;5;220m"
+#define PURPLE "\033[38;5;135m"
+#define BLUE "\033[38;5;18m"
+#define WHITE "\033[38;5;195m"
+
+#define RED_BG "\033[48;5;196m"
+#define GREEN_BG "\033[48;5;34m"
+#define YELLOW_BG "\033[48;5;220m"
+#define PURPLE_BG "\033[48;5;135m"
+#define BLUE_BG "\033[48;5;18m"
+#define WHITE_BG "\033[48;5;195m"
+
+
 #define END "\033[0m"
 
 
