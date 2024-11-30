@@ -4,6 +4,7 @@
 int main() {
     try {
         Bureaucrat bob("Bob", 50);
+        
         Form formA("FormA", 45, 30);
         Form formB("FormB", 150, 150);
 

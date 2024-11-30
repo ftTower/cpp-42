@@ -2,7 +2,7 @@ BUILD_DIR	=	build
 NAME		=	Bureaucrate
 CFLAG		=	-Wall -Wextra -Werror -g3 -std=c++98 
 
-SRC			=	main.cpp
+SRC			=	main.cpp Bureaucrate.cpp
 			
 CC			=	g++
 

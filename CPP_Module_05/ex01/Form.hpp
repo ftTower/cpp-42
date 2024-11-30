@@ -18,10 +18,10 @@ class Form {
     Form(const std::string &name, int gradeToSign, int gradeToExecute);
     ~Form();
 
-    const std::string &getName() const {return (name);}
-    bool              getSign() const {return (isSigned);}
-    int               getGradeToSign() const {return (gradeToSign);}
-    int               getGradeToExecute() const {return (gradeToExecute);}
+    const std::string &getName() const;
+    bool              getSign() const;
+    int               getGradeToSign() const;
+    int               getGradeToExecute() const;
     void              beSigned(const Bureaucrat &bureaucrat__);
 
     //----------------------exeception---------
