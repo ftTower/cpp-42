@@ -21,15 +21,24 @@ int main() {
     }
 
     try {
-        Bureaucrat coco("Coco", 1);
-        coco.decrementGrade();  
+        Bureaucrat coco("Coco", MAX_GRADE - 2 );
+        coco.decrementGrade();
+        std::cout << coco << std::endl;
+        coco.decrementGrade(); 
+        coco.decrementGrade(); 
+        std::cout << coco << std::endl;
+
     } catch (const std::exception& e) {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
 
     try {
-        Bureaucrat cece("Cece", MAX_GRADE - 1);
+        Bureaucrat cece("Cece", 0 + 2);
         cece.incrementGrade();  
+        std::cout << cece << std::endl;
+        cece.incrementGrade();  
+        cece.incrementGrade();  
+
     } catch (const std::exception& e) {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
