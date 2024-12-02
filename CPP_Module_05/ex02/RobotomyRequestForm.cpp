@@ -30,3 +30,14 @@ void    RobotomyRequestForm::execute(Bureaucrat const &executor) const {
         std::cout << "Robotomy failed on " << this->getTarget() << std::endl;
     }
 }
+
+std::ostream	&operator<<(std::ostream &o, RobotomyRequestForm a)
+{
+	o << "Form " << a.getName() <<
+	":\n\ttarget-nam:\t" << a.getTarget() <<
+	"\n\tsign-grade:\t" << a.getGradeToSign() <<
+	"\n\texec-grade:\t" << a.getGradeToExecute() <<
+	"\n\tis signed:\t" << a.getSign() <<
+	std::endl;
+	return (o);
+}

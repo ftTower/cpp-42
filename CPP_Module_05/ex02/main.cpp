@@ -17,6 +17,14 @@ int	main(void)
 		RobotomyRequestForm roboForm("office");
 		PresidentialPardonForm presForm("criminal");
 
+        std::cout << shrubForm << std::endl;
+        std::cout << roboForm << std::endl;
+        std::cout << presForm << std::endl;
+
+
+		std::cout << "================" << std::endl;
+
+
 		highRank.signForm(shrubForm); // :D
 		midRank.signForm(roboForm);   // :D
 		lowRank.signForm(presForm);   // :(
@@ -64,6 +72,7 @@ int	main(void)
 	{
 		std::cerr << "Exception: " << e.what() << std::endl;
 	}
+
 
 	return (0);
 }

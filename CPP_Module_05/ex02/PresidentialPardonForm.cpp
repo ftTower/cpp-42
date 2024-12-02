@@ -28,3 +28,14 @@ void PresidentialPardonForm::execute(Bureaucrat const &executor) const
 
 	std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }
+
+std::ostream	&operator<<(std::ostream &o, PresidentialPardonForm a)
+{
+	o << "Form " << a.getName() <<
+	":\n\ttarget-nam:\t" << a.getTarget() <<
+	"\n\tsign-grade:\t" << a.getGradeToSign() <<
+	"\n\texec-grade:\t" << a.getGradeToExecute() <<
+	"\n\tis signed:\t" << a.getSign() <<
+	std::endl;
+	return (o);
+}

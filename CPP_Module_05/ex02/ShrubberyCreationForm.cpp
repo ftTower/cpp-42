@@ -32,3 +32,14 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 		std::cerr << "Error creating file." << std::endl;
 	}
 }
+
+std::ostream	&operator<<(std::ostream &o, ShrubberyCreationForm a)
+{
+	o << "Form " << a.getName() <<
+	":\n\ttarget-nam:\t" << a.getTarget() <<
+	"\n\tsign-grade:\t" << a.getGradeToSign() <<
+	"\n\texec-grade:\t" << a.getGradeToExecute() <<
+	"\n\tis signed:\t" << a.getSign() <<
+	std::endl;
+	return (o);
+}

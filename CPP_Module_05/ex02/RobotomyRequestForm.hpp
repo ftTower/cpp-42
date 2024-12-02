@@ -20,4 +20,6 @@ class RobotomyRequestForm : public AForm
 	RobotomyRequestForm();
 };
 
+std::ostream	&operator<<(std::ostream &o, RobotomyRequestForm a);
+
 #endif

@@ -18,4 +18,6 @@ class ShrubberyCreationForm : public AForm {
         ShrubberyCreationForm();
 };
 
+std::ostream	&operator<<(std::ostream &o, ShrubberyCreationForm a);
+
 #endif
