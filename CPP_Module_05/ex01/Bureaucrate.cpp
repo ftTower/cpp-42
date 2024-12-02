@@ -9,6 +9,13 @@ Bureaucrat::Bureaucrat(std::string name, int _grade) : name(name), grade(_grade)
 		throw (GradeTooHighException());
 }
 
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src) {
+	if (this == &src)
+		return *this;
+	this->grade = src.getGrade();
+	return *this;
+}
+
 std::string Bureaucrat::getName() const
 {
 	return (name);

@@ -43,5 +43,17 @@ int main() {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
 
+    try {
+        Bureaucrat toto("Toto", 50);
+
+        Bureaucrat liso("Liso", 70);
+
+        toto = liso;
+
+        std::cout << toto << std::endl;
+    } catch (std::exception &e) {
+        std::cerr << "Exception caught: " << e.what() << std::endl;
+    }
+
     return 0;
 }

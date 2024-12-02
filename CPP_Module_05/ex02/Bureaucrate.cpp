@@ -1,5 +1,12 @@
 #include "Bureaucrate.hpp"
 
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src) {
+	if (this == &src)
+		return *this;
+	this->grade = src.getGrade();
+	return *this;
+}
+
 Bureaucrat::Bureaucrat(std::string name, int _grade) : name(name), grade(_grade)
 {
 	if (grade > MAX_GRADE)
