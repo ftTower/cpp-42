@@ -6,18 +6,18 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 02:40:29 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/30 18:53:23 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/02 22:08:37 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrate.hpp"
 
-std::string Bureaucrat::getName()
+const std::string& Bureaucrat::getName() const
 {
 	return (name);
 }
 
-int Bureaucrat::getGrade()
+ int Bureaucrat::getGrade() const
 {
 	return (grade);
 }
@@ -45,3 +45,8 @@ void Bureaucrat::decrementGrade(void)
 	else
 		grade += 1;
 };
+
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &B)
+{
+		return (out << B.getName() << ", bureaucrat grade " << B.getGrade() << std::endl);
+}

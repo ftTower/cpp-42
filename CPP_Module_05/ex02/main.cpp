@@ -9,7 +9,7 @@ int main() {
         Bureaucrat highRank("HighRank", 1); //  :D
         Bureaucrat midRank("MidRank", 50);  //  :|
         Bureaucrat lowRank("LowRank", 150); // :(
-        
+
         ShrubberyCreationForm shrubForm("home");
         RobotomyRequestForm roboForm("office");
         PresidentialPardonForm presForm("criminal");
@@ -35,6 +35,7 @@ int main() {
         }
 
         highRank.executeForm(presForm);  //:D
+
 
     } catch (const std::exception &e) {
         std::cerr << "Exception: " << e.what() << std::endl;

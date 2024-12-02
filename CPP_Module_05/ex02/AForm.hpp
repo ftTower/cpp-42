@@ -8,7 +8,7 @@ class Bureaucrat;
 
 class AForm {
     private:
-
+    AForm();
     const std::string name;
     bool              isSigned;
     const int         gradeToSign;
@@ -44,7 +44,10 @@ class AForm {
                 return ("Form not signed");
             }
     };
+
 };
+
+std::ostream &operator<<(std::ostream &out, const AForm &form);
 
 
 #endif

@@ -13,6 +13,7 @@ class	Form;
 class Bureaucrat
 {
   private:
+	Bureaucrat();
 	const std::string name;
 	int grade;
 
@@ -45,7 +46,9 @@ class Bureaucrat
 			return ("Grade is too low");
 		}
 	};
+
 	//----------------------operator---------
+
 	friend std::ostream &operator<<(std::ostream &out, const Bureaucrat &B)
 	{
 		return (out << B.name << ", bureaucrat grade " << B.grade << std::endl);

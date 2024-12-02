@@ -1,5 +1,4 @@
-#ifndef BUREAUCRATE_HPP
-# define BUREAUCRATE_HPP
+#pragma once
 
 # include <iostream>
 # include <stdexcept>
@@ -9,14 +8,15 @@
 class Bureaucrat
 {
   private:
+	Bureaucrat();
 	const std::string name;
 	int grade;
 
   public:
 	Bureaucrat(std::string name, int grade);
 
-	std::string getName();
-	int getGrade();
+	const std::string& getName() const;
+	 int getGrade() const;
 
 	void incrementGrade();
 	void decrementGrade();
@@ -38,11 +38,6 @@ class Bureaucrat
 			return ("Grade is too low!");
 		}
 	};
-
-	friend std::ostream &operator<<(std::ostream &out, const Bureaucrat &B)
-	{
-		return (out << B.name << ", bureaucrat grade " << B.grade << std::endl);
-	}
 };
 
-#endif
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &B);

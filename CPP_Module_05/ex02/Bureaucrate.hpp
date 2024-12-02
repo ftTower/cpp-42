@@ -12,6 +12,7 @@ class	AForm;
 class Bureaucrat
 {
   private:
+	Bureaucrat();
 	const std::string name;
 	int grade;
 

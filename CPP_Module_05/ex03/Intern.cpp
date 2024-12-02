@@ -6,13 +6,11 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:15:49 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/01 02:01:46 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/02 21:56:19 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
-
-Intern::Intern() {}
 
 Intern::Intern(const Intern &target) {
 	*this = target;
