@@ -1,19 +1,45 @@
 #include "ShrubberyCreationForm.hpp"
 #include <fstream>
 
-void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
-    if (!getSign())
-        throw FormNotSignedException();
-    if (executor.getGrade() > getGradeToExecute())
-        throw GradeTooLowException();
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &src) : Form("ShrubberyCreationForm",
+	145, 137), _target(src.getTarget()){};
 
-    std::string filename = target + "_shrubbery";
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : Form("ShrubberyCreationForm",
+	145, 137), _target(target){};
 
-    std::ofstream outFile(filename.c_str());
-    if (outFile) {
-        outFile << "ASCII Art of Trees" << std::endl;
-        outFile.close();
-    } else {
-        std::cerr << "Error creating file." << std::endl;
-    }
+const std::string ShrubberyCreationForm::getTarget() const
+{
+	return (_target);
+}
+
+void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
+{
+	if (!getSign())
+		throw FormNotSignedException();
+	if (executor.getGrade() > getGradeToExecute())
+		throw GradeTooLowException();
+
+	std::string filename = this->getTarget() + "_shrubbery";
+
+	std::ofstream outFile(filename.c_str());
+	if (outFile)
+	{
+		outFile << "ASCII Art of Trees" << std::endl;
+		outFile.close();
+	}
+	else
+	{
+		std::cerr << "Error creating file." << std::endl;
+	}
+}
+
+std::ostream	&operator<<(std::ostream &o, ShrubberyCreationForm a)
+{
+	o << "Form " << a.getName() <<
+	":\n\ttarget-nam:\t" << a.getTarget() <<
+	"\n\tsign-grade:\t" << a.getGradeToSign() <<
+	"\n\texec-grade:\t" << a.getGradeToExecute() <<
+	"\n\tis signed:\t" << a.getSign() <<
+	std::endl;
+	return (o);
 }

@@ -6,11 +6,16 @@
 
 class ShrubberyCreationForm : public Form {
     public :
-        ShrubberyCreationForm(const std::string &target) : Form("ShrubberyCreationForm", 145, 137), target(target) {};
+        ShrubberyCreationForm(const ShrubberyCreationForm &target);
+        ShrubberyCreationForm(const std::string &target);
         ~ShrubberyCreationForm() {};
+
         virtual void execute(Bureaucrat const &executor) const;
+
+	    const std::string getTarget() const;
     private :
-        const std::string target;
+        const std::string _target;
         ShrubberyCreationForm();
 };
 
+std::ostream	&operator<<(std::ostream &o, ShrubberyCreationForm a);
