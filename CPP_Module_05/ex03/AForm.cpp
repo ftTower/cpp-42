@@ -18,6 +18,8 @@ int	Form::getGradeToExecute(void) const
 	return (gradeToExecute);
 }
 
+Form::Form(const Form &src) : name(src.getName()), isSigned(src.getSign()), gradeToSign(src.getGradeToSign()), gradeToExecute(src.getGradeToExecute()) {}
+
 Form::Form(const std::string &name, int gradeToSign, int gradeToExecute) : name(name), isSigned(false), gradeToSign(gradeToSign),
 	gradeToExecute(gradeToExecute)
 {

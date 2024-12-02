@@ -6,11 +6,15 @@
 
 class ShrubberyCreationForm : public AForm {
     public :
-        ShrubberyCreationForm(const std::string &target) : AForm("ShrubberyCreationForm", 145, 137), target(target) {};
+        ShrubberyCreationForm(const ShrubberyCreationForm &target);
+        ShrubberyCreationForm(const std::string &target);
         ~ShrubberyCreationForm() {};
+
         virtual void execute(Bureaucrat const &executor) const;
+
+	    const std::string getTarget() const;
     private :
-        const std::string target;
+        const std::string _target;
         ShrubberyCreationForm();
 };
 
