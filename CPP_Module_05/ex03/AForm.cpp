@@ -1,24 +1,24 @@
 #include "AForm.hpp"
 #include "Bureaucrate.hpp"
 
-const std::string &AForm::getName() const
+const std::string &Form::getName() const
 {
 	return (name);
 }
-bool	AForm::getSign(void) const
+bool	Form::getSign(void) const
 {
 	return (isSigned);
 }
-int	AForm::getGradeToSign(void) const
+int	Form::getGradeToSign(void) const
 {
 	return (gradeToSign);
 }
-int	AForm::getGradeToExecute(void) const
+int	Form::getGradeToExecute(void) const
 {
 	return (gradeToExecute);
 }
 
-AForm::AForm(const std::string &name, int gradeToSign,
+Form::Form(const std::string &name, int gradeToSign,
 	int gradeToExecute) : name(name), gradeToSign(gradeToSign),
 	gradeToExecute(gradeToExecute)
 {
@@ -28,11 +28,11 @@ AForm::AForm(const std::string &name, int gradeToSign,
 		throw GradeTooHighException();
 }
 
-AForm::~AForm()
+Form::~Form()
 {
 }
 
-void AForm::beSigned(const Bureaucrat &bureaucrat__)
+void Form::beSigned(const Bureaucrat &bureaucrat__)
 {
 	if (bureaucrat__.getGrade() > getGradeToSign())
 	{
@@ -41,7 +41,7 @@ void AForm::beSigned(const Bureaucrat &bureaucrat__)
 	isSigned = true;
 };
 
-std::ostream &operator<<(std::ostream &out, const AForm &form)
+std::ostream &operator<<(std::ostream &out, const Form &form)
 {
 	out << "Form " << form.getName() << ",Sign grade "
             << form.getGradeToSign()

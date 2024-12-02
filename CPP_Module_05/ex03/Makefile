@@ -1,8 +1,8 @@
 BUILD_DIR	=	build
-NAME		=	AForm
+NAME		=	Intern
 CFLAG		=	-Wall -Wextra -Werror -g3 -std=c++98 
 
-SRC			=	main.cpp Bureaucrate.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+SRC			=	main.cpp Bureaucrate.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp
 			
 CC			=	g++
 

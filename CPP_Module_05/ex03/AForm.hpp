@@ -1,12 +1,12 @@
-#ifndef AFORM_HPP
-# define AFORM_HPP
+#pragma once
+
 
 #include <iostream>
 #include "Bureaucrate.hpp"
 
 class Bureaucrat;
 
-class AForm {
+class Form {
     private:
 
     const std::string name;
@@ -15,8 +15,8 @@ class AForm {
     const int         gradeToExecute;
 
     public:
-    AForm(const std::string &name, int gradeToSign, int gradeToExecute);
-    virtual ~AForm();
+    Form(const std::string &name, int gradeToSign, int gradeToExecute);
+    virtual ~Form();
 
     const std::string &getName() const;
     bool              getSign() const ;
@@ -45,6 +45,3 @@ class AForm {
             }
     };
 };
-
-
-#endif

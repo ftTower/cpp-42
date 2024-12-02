@@ -33,7 +33,7 @@ int Bureaucrat::getGrade(void) const
 	return (grade);
 }
 
-void Bureaucrat::signForm(AForm &form)
+void Bureaucrat::signForm(Form &form)
 {
 	try
 	{
@@ -46,7 +46,7 @@ void Bureaucrat::signForm(AForm &form)
 	}
 };
 
-void Bureaucrat::executeForm(AForm const &form) const
+void Bureaucrat::executeForm(Form const &form) const
 {
 	try
 	{

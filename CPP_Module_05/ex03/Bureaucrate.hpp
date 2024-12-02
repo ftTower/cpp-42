@@ -1,5 +1,5 @@
-#ifndef BUREAUCRATE_HPP
-# define BUREAUCRATE_HPP
+#pragma once
+
 
 # include "AForm.hpp"
 # include <iostream>
@@ -7,7 +7,7 @@
 
 # define MAX_GRADE 150
 
-class	AForm;
+class	Form;
 
 class Bureaucrat
 {
@@ -19,8 +19,8 @@ class Bureaucrat
 	Bureaucrat(std::string name, int grade);
 	std::string getName() const;
 	int getGrade() const;
-	void signForm(AForm &form);
-	void executeForm(AForm const &form) const;
+	void signForm(Form &form);
+	void executeForm(Form const &form) const;
 
 	//----------------------arithmetic---------
 
@@ -52,5 +52,3 @@ class Bureaucrat
 		return (out << B.name << ", bureaucrat grade " << B.grade << std::endl);
 	}
 };
-
-#endif

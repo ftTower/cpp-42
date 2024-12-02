@@ -1,10 +1,10 @@
-#ifndef ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP_HPP
+#pragma once
+
 
 #include "AForm.hpp"
 #include <string>
 
-class RobotomyRequestForm : public AForm {
+class RobotomyRequestForm : public Form {
     public:
     RobotomyRequestForm(const std::string &target);
     virtual ~RobotomyRequestForm();
@@ -13,5 +13,3 @@ class RobotomyRequestForm : public AForm {
     private :
     const std::string target;
 };
-
-#endif
