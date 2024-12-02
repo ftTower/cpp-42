@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 02:40:29 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/02 22:14:43 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/02 22:19:55 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src) {
 	this->grade = src.getGrade();
 	return *this;
 }
+
+Bureaucrat::~Bureaucrat() {}
 
 Bureaucrat::Bureaucrat(std::string name, int _grade) : name(name), grade(_grade)
 {
