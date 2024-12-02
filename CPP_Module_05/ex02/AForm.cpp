@@ -35,6 +35,12 @@ AForm::~AForm()
 {
 }
 
+AForm	&AForm::operator=(const AForm &src) {
+	if (this == &src)
+		return *this;
+	return *this;
+}
+
 void AForm::beSigned(const Bureaucrat &bureaucrat__)
 {
 	if (bureaucrat__.getGrade() > getGradeToSign())

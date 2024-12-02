@@ -18,8 +18,7 @@ int	Form::getGradeToExecute(void) const
 	return (gradeToExecute);
 }
 
-Form::Form(const std::string &name, int gradeToSign,
-	int gradeToExecute) : name(name), gradeToSign(gradeToSign),
+Form::Form(const std::string &name, int gradeToSign, int gradeToExecute) : name(name), isSigned(false), gradeToSign(gradeToSign),
 	gradeToExecute(gradeToExecute)
 {
 	if (gradeToSign < 1 || gradeToExecute < 1)
@@ -30,6 +29,12 @@ Form::Form(const std::string &name, int gradeToSign,
 
 Form::~Form()
 {
+}
+
+Form	&Form::operator=(const Form &src) {
+	if (this == &src)
+		return *this;
+	return *this;
 }
 
 void Form::beSigned(const Bureaucrat &bureaucrat__)

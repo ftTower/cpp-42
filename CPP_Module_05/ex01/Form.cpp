@@ -44,6 +44,12 @@ void Form::beSigned(const Bureaucrat &bureaucrat__)
 	isSigned = true;
 }
 
+Form	&Form::operator=(const Form &src) {
+	if (this == &src)
+		return *this;
+	return *this;
+}
+
 std::ostream &operator<<(std::ostream &out, const Form &form)
 {
 	out << "Form " << form.getName() << ",Sign grade " 

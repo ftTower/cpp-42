@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:13:04 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/02 21:56:30 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/02 22:38:00 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 
 class Intern {
 	private :
-		Intern();
 		
 	public :
+		Intern();
 		Intern(const Intern &src);
 
 		~Intern();

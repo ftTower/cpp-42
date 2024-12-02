@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 02:40:29 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/02 22:19:55 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/02 22:37:09 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ Bureaucrat::Bureaucrat(std::string name, int _grade) : name(name), grade(_grade)
 		throw GradeTooLowException();
 	else if (grade < 1)
 		throw(GradeTooHighException());
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &src) : name(src.getName()), grade(src.getGrade())
+{
+	*this = src;
 }
 
 void Bureaucrat::incrementGrade()
