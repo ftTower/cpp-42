@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:43:08 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/03 19:29:51 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/03 19:32:18 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main() {
         std::cout << "Test 2: Size of intArray: " << intArray.size() << std::endl;
 
         for (unsigned int i = 0; i < size; ++i) {
-            intArray[i] = i * 10; // Remplir l'array avec des valeurs
+            intArray[i] = i * 10; 
             std::cout << "intArray[" << i << "] = " << intArray[i] << std::endl;
         }
 
