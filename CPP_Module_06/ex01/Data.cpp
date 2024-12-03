@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 15:19:58 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/23 15:50:10 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/03 01:20:23 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,9 @@ Data::Data() {
 	this->name = "Default";
 }
 
-Data::Data(const std::string &Name) {
-	this->name = Name;
-}
+Data::Data(const std::string &Name) : name(Name) {}
 
-Data::~Data() {
-	
-}
+Data::~Data() {}
 
 std::string Data::getName() {
 	return (this->name);
