@@ -1,5 +1,6 @@
 
 #include "ScalarConverter.hpp"
+#include <string.h>
 
 typedef enum e_type
 {
@@ -24,9 +25,11 @@ t_type	parseLiteral(const std::string &literal)
 		else
 			return (std::cout << "DOUBLE]\033[0m", DOUBLE);
 	}
-	else if (literal == "-inff" || literal == "+inff" || literal == "nanf")
+	else if (literal == "-inff" || literal == "+inff" || literal == "nanf"
+		|| literal == "-nanf")
 		return (std::cout << "FLOAT PSEUDO]\033[0m", FLOAT_PSEUDO);
-	else if (literal == "-inf" || literal == "+inf" || literal == "nan")
+	else if (literal == "-inf" || literal == "+inf" || literal == "nan"
+		|| literal == "-nan")
 		return (std::cout << "DOUBLE PSEUDO]\033[0m", DOUBLE_PSEUDO);
 	return (std::cout << "INT]\033[0m", INT);
 }
@@ -93,6 +96,34 @@ void	printInt(t_type type, const std::string &literal)
 	std::cout << value << std::endl;
 }
 
+void	printInf(const std::string &literal, bool isFloat)
+{
+	if (isFloat && (!strncmp("inf", literal.c_str(), literal.size())
+			|| !strncmp("+inf", literal.c_str(), literal.size())
+			|| !strncmp("-inf", literal.c_str(), literal.size())
+			|| !strncmp("nan", literal.c_str(), literal.size())
+			|| !strncmp("-nan", literal.c_str(), literal.size())))
+		std::cout << literal << "f";
+	else if (!isFloat && (!strncmp("inf", literal.c_str(), literal.size())
+			|| !strncmp("+inf", literal.c_str(), literal.size())
+			|| !strncmp("-inf", literal.c_str(), literal.size())
+			|| !strncmp("nan", literal.c_str(), literal.size())
+			|| !strncmp("-nan", literal.c_str(), literal.size())))
+		std::cout << literal;
+	else if (!isFloat && (!strncmp("inff", literal.c_str(), literal.size())
+			|| !strncmp("+inff", literal.c_str(), literal.size())
+			|| !strncmp("-inff", literal.c_str(), literal.size())
+			|| !strncmp("nanf", literal.c_str(), literal.size())
+			|| !strncmp("-nanf", literal.c_str(), literal.size())))
+		std::cout << literal.substr(0, literal.size() - 1);
+	else if (isFloat && (!strncmp("inff", literal.c_str(), literal.size())
+			|| !strncmp("+inff", literal.c_str(), literal.size())
+			|| !strncmp("-inff", literal.c_str(), literal.size())
+			|| !strncmp("nanf", literal.c_str(), literal.size())
+			|| !strncmp("-nanf", literal.c_str(), literal.size())))
+		std::cout << literal;
+}
+
 void	printFloat(t_type type, const std::string &literal)
 {
 	std::cout << "|float :\t";
@@ -100,18 +131,8 @@ void	printFloat(t_type type, const std::string &literal)
 		std::cout << strtof(literal.c_str(), NULL) << "f";
 	else if (type == CHAR)
 		std::cout << static_cast<float>(literal[0]) << "f";
-	else if (type == DOUBLE_PSEUDO && (literal == "inf" || literal == "+inf"))
-		std::cout << "+inf";
-	else if (type == DOUBLE_PSEUDO && literal == "-inf")
-		std::cout << "-inf";
-	else if (type == DOUBLE_PSEUDO && literal == "nan")
-		std::cout << "nan";
-	else if (type == FLOAT_PSEUDO && (literal == "inff" || literal == "+inff"))
-		std::cout << "+inff";
-	else if (type == FLOAT_PSEUDO && literal == "-inff")
-		std::cout << "-inff";
-	else if (type == FLOAT_PSEUDO && literal == "nanf")
-		std::cout << "nanf";
+	else if (type == DOUBLE_PSEUDO || type == FLOAT_PSEUDO)
+		printInf(literal, true);
 	std::cout << std::endl;
 }
 
@@ -122,18 +143,8 @@ void	printDouble(t_type type, const std::string &literal)
 		std::cout << strtod(literal.c_str(), NULL);
 	else if (type == CHAR)
 		std::cout << static_cast<float>(literal[0]);
-	else if (type == FLOAT_PSEUDO && (literal == "inff" || literal == "+inff"))
-		std::cout << "+inff";
-	else if (type == FLOAT_PSEUDO && literal == "-inff")
-		std::cout << "-inff";
-	else if (type == FLOAT_PSEUDO && literal == "nanf")
-		std::cout << "nanf";
-	else if (type == DOUBLE_PSEUDO && (literal == "inf" || literal == "+inf"))
-		std::cout << "+inf";
-	else if (type == DOUBLE_PSEUDO && literal == "-inf")
-		std::cout << "-inf";
-	else if (type == DOUBLE_PSEUDO && literal == "nan")
-		std::cout << "nan";
+	else if (type == DOUBLE_PSEUDO || type == FLOAT_PSEUDO)
+		printInf(literal, false);
 	std::cout << std::endl;
 }
 
