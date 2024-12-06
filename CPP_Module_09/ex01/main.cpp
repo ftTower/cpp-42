@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 23:37:49 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/30 02:08:48 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/06 19:56:33 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	main(int argc, char **argv)
 		RPN rpn(argv[1]);
 
 		rpn.displayArr();
-		std::cout << rpn.calculateInput() << std::endl;
+
+		// std::cout << rpn.calculateInput() << std::endl;
 	}
 	catch (std::exception &e)
 	{

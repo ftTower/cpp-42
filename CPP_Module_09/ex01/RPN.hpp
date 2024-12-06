@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 23:38:12 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/30 02:02:25 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/06 19:55:26 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,13 @@ class RPN {
 
 	private :
 		RPN();
-		std::vector <int>arr;
+		std::vector <std::string> arr;
 
 	public :
 		RPN(const std::string &input);
-		RPN(const std::vector  <int>arr);
+		// RPN(const std::vector  <std::string> arr);
 		~RPN();
 
-		void displayArr() const;
-		int calculateInput();
+		void	displayArr();
 };
 

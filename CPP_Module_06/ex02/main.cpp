@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 17:10:17 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/23 17:35:13 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/05 21:27:26 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ Base *generate(void) {
 
 void	identify(Base *ptr) {
 	std::cout << "is a : ";
+	if (!ptr)
+		return (std::cout << "NULL ptr\n", (void)NULL);
 	if (dynamic_cast<A *>(ptr))
 		std::cout << "A ptr\n";
 	else if (dynamic_cast<B *>(ptr))
@@ -56,13 +58,14 @@ void	identify(Base &ref) {
 		std::cout << "C ref\n";
 	}
 	catch(const std::exception &e) {}
-	
+	std::cout << std::endl;
 }
 
 int	main(void) {
 	Base *ptr = generate();
 	if (!ptr)
 		return (1);
+	// ptr = NULL;
 	identify(ptr);
 	identify(*ptr);
 	delete(ptr);
