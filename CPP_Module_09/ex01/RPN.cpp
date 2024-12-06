@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 00:45:32 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/06 20:22:04 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/06 20:43:07 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,21 @@ RPN::RPN(const std::string &input)
 	}
 }
 
+bool	isOperand(char c) {
+	return (c == '/' || c == '*' || c == '-' || c == '+');
+}
+
+void RPN::calculate()
+{
+	while(arr.size() > 1){
+				
+		
+		
+	}
+}
+
 void RPN::displayArr()
 {
 	for (size_t i = 0; i < arr.size(); i++)
-	{
 		std::cout << i << " " << arr[i] << std::endl;
-	}
 }
