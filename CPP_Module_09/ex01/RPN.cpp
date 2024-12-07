@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 00:45:32 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/07 15:41:18 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/07 16:29:23 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,26 @@ int	calculation(Element nb1, Element nb2, Element operand)
 	return (static_cast<int> (buf));		
 }
 
+bool RPN::HadOperand() const { 
+	for (size_t i = 0; i < arr.size(); i++)
+		if (_isOperand(arr[i].getValue()))
+			return (true);
+	return false;
+}
+
 void RPN::RpnCalculationElements()
 {
 	if (arr.size() < 3)
 		throw(std::runtime_error("Cannot do operation with less than 3 elements!"));
+	else if (!HadOperand())
+		throw(std::runtime_error("Cannot do operation with no operand!"));
+	
 	size_t i;
 	for(i = 0; i < arr.size(); i++) {
 		if (arr[i].getType() != TYPE_NUM)
 			break ;
 	}
-	std::cout << arr[i - 2] << arr[i - 1] << arr[i] << std::endl;
+	std::cout << arr[i - 2] << " " << arr[i - 1] << " " << arr[i] << std::endl;
 	int buf = calculation(arr[i - 2], arr[i - 1], arr[i]);
 	arr.erase(arr.begin(), arr.begin() + i);
 	arr.insert(arr.begin(), Element(buf));

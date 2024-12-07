@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 23:38:12 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/07 15:19:13 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/07 16:27:48 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ class RPN {
 		RPN(const std::string &input);
 		// RPN(const std::vector  <std::string> arr);
 		~RPN();
+
+		bool	HadOperand() const;
 
 		void	displayArr();
 		void	calculate();

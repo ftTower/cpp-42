@@ -6,11 +6,12 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 03:08:19 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/07 15:24:46 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/07 16:29:51 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Element.hpp"
+#include <cctype>
 
 // class Element {
 // public :
@@ -31,8 +32,8 @@ bool	_isOperand(char c)
 
 int Element::getValue() const
 {
-	if (getType() == TYPE_NUM)
-		return (this->value - '0');
+	// if (getType() == TYPE_NUM)
+	// 	return (this->value - '0');
 	return (this->value);
 }
 
@@ -87,8 +88,8 @@ std::ostream &operator<<(std::ostream &out, const Element &E)
 		out << "- ";
 		break ;
 	default:
-		out << E.getValue();
+		out << E.getValue() - '0';
 		break ;
 	}
-	return (out);
+	return (out << " " << E.getValue());
 }
