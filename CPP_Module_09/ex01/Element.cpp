@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 03:08:19 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/07 03:44:16 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/07 15:24:46 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,15 @@
 // t_type type;
 // };
 
-bool	isOperand(char c)
+bool	_isOperand(char c)
 {
 	return (c == '/' || c == '*' || c == '-' || c == '+');
 }
 
 int Element::getValue() const
 {
+	if (getType() == TYPE_NUM)
+		return (this->value - '0');
 	return (this->value);
 }
 
@@ -41,7 +43,7 @@ t_type Element::getType() const
 
 Element::Element(char c)
 {
-	if (!isdigit(c) && !isOperand(c))
+	if (!isdigit(c) && !_isOperand(c))
 		throw(std::runtime_error("Please Enter numbers between 0 & 9 or operand {'+', '-', '*', '/'} !"));
 	switch (c)
 	{
@@ -73,21 +75,20 @@ std::ostream &operator<<(std::ostream &out, const Element &E)
 	switch (E.getType())
 	{
 	case TYPE_DIV:
-		out << "/";
+		out << "/ ";
 		break ;
 	case TYPE_MULTI:
-		out << "*";
+		out << "* ";
 		break ;
 	case TYPE_PLUS:
-		out << "+";
+		out << "+ ";
 		break ;
 	case TYPE_MINUS:
-		out << "-";
+		out << "- ";
 		break ;
 	default:
-		out << E.getValue() - '0';
+		out << E.getValue();
 		break ;
 	}
-
-	return (out << ", value : " << E.getValue());
+	return (out);
 }

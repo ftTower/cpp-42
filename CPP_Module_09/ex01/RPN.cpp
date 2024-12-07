@@ -6,13 +6,13 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 00:45:32 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/07 03:49:48 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/07 15:41:18 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-// cd ../ex01 && make re && clear && valgrind ./RPN "          1 1 + 2 *         +   3 -" && make fclean
+// cd ../ex01 && make re && clear && valgrind ./RPN "          1 1 + 2 *        +   3 -" && make fclean
 
 RPN::~RPN()
 {
@@ -31,37 +31,61 @@ RPN::RPN(const std::string &input)
 		if (index < input.size() - 1 && isdigit(input[index])
 			&& isdigit(input[index + 1]))
 			throw(std::runtime_error("One digit numbers only !"));
-		else if (index < input.size() - 1 && isOperand(input[index])
-			&& isOperand(input[index + 1]))
+		else if (index < input.size() - 1 && _isOperand(input[index])
+			&& _isOperand(input[index + 1]))
 			throw(std::runtime_error("Please separate operand with space !"));
 		else if (input[index] != ' ')
 			arr.push_back(input[index]);
-		
-		// while (index < input.size() && input[index] == ' ')
-		// 	index++;
-		// while (index < input.size() && input[index] != ' ')
-		// {
-		// 	index++;
-		// }
-		// std::string buf = input.substr(index - 1, 1);
-		// try {
-		// 	arr.push_back(Element(buf));
-		// } catch (std::exception &e) {
-		// 	std::cerr << "ERROR : " << e.what() << std::endl;
-		// }
 		index++;
 	}
 }
 
-void RPN::calculate()
+int	calculation(Element nb1, Element nb2, Element operand)
 {
-	while (arr.size() > 1)
+	if (nb1.getType() != TYPE_NUM || nb2.getType() != TYPE_NUM || operand.getType() == TYPE_NUM)
+		throw(std::runtime_error("wrong entry for calculation ! must be : <nb> <nb> <operand>"));
+	long buf;
+	switch (operand.getType())
 	{
+		case TYPE_DIV:
+			buf = nb1.getValue() / nb2.getValue();
+			break;
+		case TYPE_MULTI:
+			buf = nb1.getValue() * nb2.getValue();
+			break;
+		case TYPE_MINUS:
+			buf = nb1.getValue() - nb2.getValue();
+			break;
+		case TYPE_PLUS:
+			buf = nb1.getValue() + nb2.getValue();
+			break;
+		default:
+			throw(std::runtime_error("Unknow operand : '-' '+' '*' '/' "));		
+			break;
 	}
+	if (buf > INT_MAX || buf < INT_MIN)
+		throw(std::runtime_error("Cannot do more operation ! int overflow"));
+	return (static_cast<int> (buf));		
+}
+
+void RPN::RpnCalculationElements()
+{
+	if (arr.size() < 3)
+		throw(std::runtime_error("Cannot do operation with less than 3 elements!"));
+	size_t i;
+	for(i = 0; i < arr.size(); i++) {
+		if (arr[i].getType() != TYPE_NUM)
+			break ;
+	}
+	std::cout << arr[i - 2] << arr[i - 1] << arr[i] << std::endl;
+	int buf = calculation(arr[i - 2], arr[i - 1], arr[i]);
+	arr.erase(arr.begin(), arr.begin() + i);
+	arr.insert(arr.begin(), Element(buf));
 }
 
 void RPN::displayArr()
 {
 	for (size_t i = 0; i < arr.size(); i++)
-		std::cout << "[" << RED << i << END << "] " << arr[i] << std::endl;
+		std::cout  << "[" << YELLOW << arr[i]  << END << "] ";
+	std::cout << std::endl;
 }

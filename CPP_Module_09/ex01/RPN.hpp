@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 23:38:12 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/07 03:06:02 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/07 15:19:13 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <vector>
 #include <iostream>
+#include <climits>
 #include "Element.hpp"
 
 #define RED "\033[38;5;196m"
@@ -38,5 +39,6 @@ class RPN {
 
 		void	displayArr();
 		void	calculate();
+		void 	RpnCalculationElements();
 };
 
