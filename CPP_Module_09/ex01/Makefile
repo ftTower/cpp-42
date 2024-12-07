@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = main.cpp RPN.cpp
+SRCS = main.cpp RPN.cpp Element.cpp
 OBJS = $(SRCS:.cpp=.o)
 NAME = RPN
 .SILENT:

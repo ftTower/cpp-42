@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RPN.hpp                                            :+:      :+:    :+:   */
+/*   Element.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 23:38:12 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/07 03:06:02 by tauer            ###   ########.fr       */
+/*   Created: 2024/12/07 03:05:37 by tauer             #+#    #+#             */
+/*   Updated: 2024/12/07 03:43:33 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <vector>
 #include <iostream>
-#include "Element.hpp"
-
-#define RED "\033[38;5;196m"
-#define GREEN "\033[38;5;34m"
-#define YELLOW "\033[38;5;220m"
-#define PURPLE "\033[38;5;135m"
-#define BLUE "\033[38;5;18m"
-#define WHITE "\033[38;5;195m"
-#define END "\033[0m"
 
 
-class RPN {
+typedef enum e_type {
+	TYPE_NUM,
+	TYPE_PLUS,
+	TYPE_MINUS,
+	TYPE_DIV,
+	TYPE_MULTI,
+}	t_type;
 
-	private :
-		RPN();
-		std::vector <Element> arr;
-
+class Element {
 	public :
-		RPN(const std::string &input);
-		// RPN(const std::vector  <std::string> arr);
-		~RPN();
+		Element(char c);
+		~Element();
 
-		void	displayArr();
-		void	calculate();
+		int getValue() const;
+		t_type getType() const;
+	private :
+		int	   value;
+		t_type type;
 };
 
+bool	isOperand(char c);
+
+std::ostream &operator<<(std::ostream &out, const Element &E);
