@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 00:45:32 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/08 14:56:27 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/08 17:49:04 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ RPN::RPN(const std::string &input)
 			&& _isOperand(input[index + 1]))
 			throw(std::runtime_error("Please separate operand with space !"));
 		else if (input[index] != ' ')
-			arr.push_back(input[index]);
+			arr.push_back(Element(input[index]));
 		index++;
 	}
 }
@@ -79,6 +79,7 @@ bool RPN::HadOperand() const {
 
 void RPN::RpnCalculationElements()
 {
+	displayArr();
 	if (arr.size() < 3)
 		throw(std::runtime_error("Cannot do operation with less than 3 elements!"));
 	else if (!HadOperand())
@@ -89,15 +90,41 @@ void RPN::RpnCalculationElements()
 		if (arr[i].getType() != TYPE_NUM)
 			break ;
 	}
+	if (i < 2)
+		throw(std::runtime_error("not enough operator !"));
 	int buf = calculation(arr[i - 2], arr[i - 1], arr[i]);
 	
-	arr.erase(arr.begin(), arr.begin() + i + 1);
+	std::cout <<  GREEN_BG << std::setw(3) <<buf << " "  << END << std::endl;
+	
+	arr.erase(arr.begin() + i - 2, arr.begin() + i + 1);
 	arr.insert(arr.begin(), Element(buf));
+}
+
+void RPN::CalculArr() {
+	try {
+		while(arr.size() > 1)
+			RpnCalculationElements();
+	} catch (std::exception &e){
+		std::cerr << "ERROR : " << e.what() << std::endl;
+	}
 }
 
 void RPN::displayArr()
 {
-	for (size_t i = 0; i < arr.size(); i++)
-		std::cout  << "[" << YELLOW << arr[i]  << END << "] ";
+	size_t i;
+	for(i = 0; i < arr.size(); i++) {
+		if (arr[i].getType() != TYPE_NUM)
+			break ;
+	}
+	
+	for (size_t y = 0; y < arr.size(); y++) {
+		if ((i > 2 && y > i - 3 && y < i + 1) || (i < 3 && y < 3))
+			std::cout << BLUE_BG;
+		else if (arr[y].getType() != TYPE_NUM)
+			std::cout << YELLOW_BG;
+		else
+			std::cout << WHITE_BG;
+		std::cout  << arr[y] << END;
+	}
 	std::cout << std::endl;
 }

@@ -6,13 +6,15 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 03:05:37 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/08 14:55:10 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/08 17:21:53 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include <iomanip>
+
 
 
 typedef enum e_type {
@@ -25,6 +27,7 @@ typedef enum e_type {
 
 class Element {
 	public :
+		Element(char value);
 		Element(int value);
 		~Element();
 

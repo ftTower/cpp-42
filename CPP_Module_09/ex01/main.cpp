@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 23:37:49 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/07 15:25:39 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/08 17:28:14 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,7 @@ int	main(int argc, char **argv)
 	{
 		RPN rpn(argv[1]);
 
-		rpn.displayArr();
-		rpn.RpnCalculationElements();
-		rpn.displayArr();
-		rpn.RpnCalculationElements();
-		rpn.displayArr();
-		rpn.RpnCalculationElements();
-		rpn.displayArr();
+		rpn.CalculArr();
 	}
 	catch (std::exception &e)
 	{
