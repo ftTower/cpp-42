@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 03:05:37 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/07 15:24:28 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/08 14:55:10 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef enum e_type {
 
 class Element {
 	public :
-		Element(char c);
+		Element(int value);
 		~Element();
 
 		int getValue() const;

@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 03:08:19 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/07 16:29:51 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/08 14:59:44 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ t_type Element::getType() const
 	return (this->type);
 }
 
-Element::Element(char c)
+Element::Element(int c)
 {
 	std::cout << "Character: " << c << " ASCII: " << static_cast<int>(c) << std::endl;
-	if (!isdigit(static_cast<int>(c)) && !_isOperand(static_cast<int>(c)))
-		throw(std::runtime_error("Please Enter numbers between 0 & 9 or operand {'+', '-', '*', '/'} !"));
+	// if (!isdigit(c) && !isOperand())
+		// throw(std::runtime_error("Please Enter numbers between 0 & 9 or operand {'+', '-', '*', '/'} !"));
 	switch (c)
 	{
 	case '-':
@@ -89,7 +89,7 @@ std::ostream &operator<<(std::ostream &out, const Element &E)
 		out << "- ";
 		break ;
 	default:
-		out << E.getValue() - '0';
+		out << E.getValue();
 		break ;
 	}
 	return (out << ":" << E.getValue());

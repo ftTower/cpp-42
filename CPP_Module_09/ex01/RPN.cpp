@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 00:45:32 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/07 16:29:23 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/08 14:56:27 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void RPN::RpnCalculationElements()
 	int buf = calculation(arr[i - 2], arr[i - 1], arr[i]);
 	
 	arr.erase(arr.begin(), arr.begin() + i + 1);
-	arr.insert(arr.begin(), Element(static_cast<char>(buf - '0')));
+	arr.insert(arr.begin(), Element(buf));
 }
 
 void RPN::displayArr()
