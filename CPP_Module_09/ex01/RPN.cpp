@@ -48,6 +48,8 @@ int	calculation(Element nb1, Element nb2, Element operand)
 	switch (operand.getType())
 	{
 		case TYPE_DIV:
+			if (nb2.getValue() == 0)
+				throw(std::runtime_error("Division by zero error!"));
 			buf = nb1.getValue() / nb2.getValue();
 			break;
 		case TYPE_MULTI:
@@ -87,10 +89,10 @@ void RPN::RpnCalculationElements()
 		if (arr[i].getType() != TYPE_NUM)
 			break ;
 	}
-	std::cout << arr[i - 2] << " " << arr[i - 1] << " " << arr[i] << std::endl;
 	int buf = calculation(arr[i - 2], arr[i - 1], arr[i]);
-	arr.erase(arr.begin(), arr.begin() + i);
-	arr.insert(arr.begin(), Element(buf));
+	
+	arr.erase(arr.begin(), arr.begin() + i + 1);
+	arr.insert(arr.begin(), Element(static_cast<char>(buf - '0')));
 }
 
 void RPN::displayArr()

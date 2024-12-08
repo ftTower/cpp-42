@@ -22,7 +22,12 @@ int	main(int argc, char **argv)
 		RPN rpn(argv[1]);
 
 		rpn.displayArr();
-		rpn.RpnCalculationElements();	
+		rpn.RpnCalculationElements();
+		rpn.displayArr();
+		rpn.RpnCalculationElements();
+		rpn.displayArr();
+		rpn.RpnCalculationElements();
+		rpn.displayArr();
 	}
 	catch (std::exception &e)
 	{

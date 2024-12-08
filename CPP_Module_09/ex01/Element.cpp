@@ -44,7 +44,8 @@ t_type Element::getType() const
 
 Element::Element(char c)
 {
-	if (!isdigit(c) && !_isOperand(c))
+	std::cout << "Character: " << c << " ASCII: " << static_cast<int>(c) << std::endl;
+	if (!isdigit(static_cast<int>(c)) && !_isOperand(static_cast<int>(c)))
 		throw(std::runtime_error("Please Enter numbers between 0 & 9 or operand {'+', '-', '*', '/'} !"));
 	switch (c)
 	{
@@ -72,7 +73,7 @@ Element::~Element()
 }
 
 std::ostream &operator<<(std::ostream &out, const Element &E)
-{
+{	
 	switch (E.getType())
 	{
 	case TYPE_DIV:
@@ -91,5 +92,5 @@ std::ostream &operator<<(std::ostream &out, const Element &E)
 		out << E.getValue() - '0';
 		break ;
 	}
-	return (out << " " << E.getValue());
+	return (out << ":" << E.getValue());
 }
