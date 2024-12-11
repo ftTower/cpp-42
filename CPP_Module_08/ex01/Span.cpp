@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 21:45:00 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/27 01:10:39 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/11 16:14:53 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,18 @@ Span::Span() : arr(0)
 
 Span::Span(unsigned int N) : arr(0), _max_size(N)
 {
+}
+
+Span::Span(const Span &src) : _max_size(src.max_size())
+{
+	*this = src;
+}
+
+Span	&Span::operator=(const Span &src)
+{
+	if (this == &src)
+		return *this;
+	return (*this);
 }
 
 unsigned int Span::max_size() const
@@ -61,9 +73,7 @@ long Span::shortestSpan() const
 	{
 		long tmp = getDist(sortedArr[i], sortedArr[i + 1]);
 		if (tmp < shortSpan)
-		{
 			shortSpan = tmp;
-		}
 	}
 	return (shortSpan);
 }

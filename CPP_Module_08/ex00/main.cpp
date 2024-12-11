@@ -6,36 +6,68 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 03:11:10 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/24 03:41:22 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/11 02:47:51 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "easyfind.hpp"
 #include <vector>
 #include <list>
+#include <deque>
+#include "easyfind.hpp"
+
+void	test_vector() {
+	std::cout << "--- Testing vector ---" << std::endl;
+	std::vector<int> v;
+	v.push_back(1);
+	v.push_back(2);
+
+	try {
+		easyfind(v, 1);
+		easyfind(v, 2);
+		easyfind(v, 3);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+}
+
+void	test_list() {
+	std::cout << "--- Testing list ---" << std::endl;
+	std::list<int> l;
+	l.push_back(1);
+	l.push_back(2);
+
+	try {
+		easyfind(l, 1);
+		easyfind(l, 2);
+		easyfind(l, 3);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+}
+
+void	test_deque() {
+	std::cout << "--- Testing deque ---" << std::endl;
+	std::deque<int> d;
+	d.push_back(1);
+	d.push_back(2);
+
+	try {
+		easyfind(d, 1);
+		easyfind(d, 2);
+		easyfind(d, 3);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+}
+
 
 int main() {
-    try {
-        // Initialisation d'un std::vector
-        int vec_values[] = {1, 2, 3, 4, 5};
-        std::vector<int> vec(vec_values, vec_values + sizeof(vec_values) / sizeof(int));
-        easyfind(vec, 3);  // Devrait trouver la valeur
-        easyfind(vec, 10); // Devrait lever une exception
+	test_vector();
+	test_list();
+	test_deque();
 
-    } catch (const std::exception& e) {
-        std::cerr << e.what() << std::endl;
-    }
-
-    try {
-        // Initialisation d'un std::list
-        int lst_values[] = {10, 20, 30, 40};
-        std::list<int> lst(lst_values, lst_values + sizeof(lst_values) / sizeof(int));
-        easyfind(lst, 20); // Devrait trouver la valeur
-        easyfind(lst, 5);  // Devrait lever une exception
-
-    } catch (const std::exception& e) {
-        std::cerr << e.what() << std::endl;
-    }
-
-    return 0;
+	return 0;
 }

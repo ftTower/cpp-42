@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 21:39:50 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/25 18:09:57 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/11 15:55:58 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,11 +139,8 @@ void oneNumbers() {
 void noNumbers() {
 	std::cout << "============================" << std::endl;
 	Span sp = Span(10);
-
 	std::cout << std::endl << "\033[38;5;5mnoNumbers\033[0m "  << sp;
 }
-
-// ./Span shortest distance biggest distance numbers.. 
 
 int	main(void)
 {

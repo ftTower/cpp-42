@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 01:15:08 by tauer             #+#    #+#             */
-/*   Updated: 2024/11/27 01:38:08 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/11 16:21:09 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 template <typename T>
 class MutantStack : public std::stack<T> {
 	public :
+
+	
 		typedef typename std::deque<T>::iterator iterator;
     	typedef typename std::deque<T>::const_iterator const_iterator;
     	typedef typename std::deque<T>::reverse_iterator reverse_iterator;
@@ -24,6 +26,7 @@ class MutantStack : public std::stack<T> {
 		
 		MutantStack() : std::stack<T>() {}
 		MutantStack(const MutantStack &other) : std::stack<T>(other) {}
+		
 		MutantStack& operator=(const MutantStack& other) {
 			if (this != &other) {
 				std::stack<T>::operator=(other);
