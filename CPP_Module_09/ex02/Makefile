@@ -1,8 +1,8 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
-SRCS = main.cpp RPN.cpp Element.cpp
+SRCS = main.cpp PmergeMe.cpp
 OBJS = $(SRCS:.cpp=.o)
-NAME = RPN
+NAME = PmergeMe
 .SILENT:
 
 all: $(NAME)
