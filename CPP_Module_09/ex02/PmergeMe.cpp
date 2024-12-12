@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:31:23 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/11 18:36:40 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/12 00:58:54 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 
 template <typename T>
-PmergeMe<T>::PmergeMe(T &arr) {
-	orig.insert(orig.end(), arr.begin(), arr.end());
+PmergeMe<T>::PmergeMe(char **argv) {
+	for (size_t i = 0; argv[i]; ++i) {
+		orig.push_back(atoi(argv[i]));
+	}
 }
 
 template <typename T>

@@ -6,7 +6,7 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:30:54 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/11 18:43:48 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/12 00:58:25 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 int	main(int argc, char **argv) {
 
-	PmergeMe<int> pm();
+	if (argc < 2)
+		return (1);
+
+	PmergeMe pm(argv);
 
 	return (0);
 }
