@@ -6,11 +6,13 @@
 /*   By: tauer <tauer@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 17:30:54 by tauer             #+#    #+#             */
-/*   Updated: 2024/12/12 00:58:25 by tauer            ###   ########.fr       */
+/*   Updated: 2024/12/12 23:16:08 by tauer            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
+// ./PmergeMe `shuf -i 1-100000 -n 10 | tr "\n" " "`
 
 int	main(int argc, char **argv) {
 
@@ -19,5 +21,7 @@ int	main(int argc, char **argv) {
 
 	PmergeMe pm(argv);
 
+
+	std::cout << pm << std::endl;
 	return (0);
 }
