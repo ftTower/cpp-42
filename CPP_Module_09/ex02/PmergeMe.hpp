@@ -13,21 +13,36 @@
 #include <iostream>
 #include <algorithm>
 #include <deque>
+#include <vector>
 #include <climits>
+#include <ctime>
+#include <sys/time.h>
 
 #include <stdlib.h>
 #include <stdbool.h>
 class PmergeMe
 {
   private:
-	std::deque<int> orig;
-	std::deque<int> final;
+	std::vector<int> _vector;
+	std::deque<int> _deque;
+	
+	double _vectorTime;
+	double _dequeTime;
+	
   public:
 	PmergeMe(char **argv);
 	~PmergeMe();
 
-	void Sort();
+	template <typename Container>
+	void Sort(Container &container) {
+		 std::sort(container.begin(), container.end());
+	}
 
+	void sortVector();
+	void sortDeque();
+	
+	void displayOutput();
+	
 	friend std::ostream &operator<<(std::ostream &out, const PmergeMe &src);
 	
 };

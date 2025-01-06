@@ -20,7 +20,10 @@ int	main(int argc, char **argv) {
 		return (1);
 
 	PmergeMe pm(argv);
-
+	
+	pm.sortDeque();
+	
+	pm.sortVector();
 
 	std::cout << pm << std::endl;
 	return (0);

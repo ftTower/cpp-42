@@ -29,20 +29,15 @@ int	InputChecker(char *input)
 	return (ret);
 }
 
-void	PmergeMe::Sort() {
-	
-}
-
 PmergeMe::PmergeMe(char **argv) {
 	for (size_t i = 1; argv[i]; ++i) {
 		try {
-			orig.push_back(InputChecker(argv[i]));
+			_vector.push_back(InputChecker(argv[i]));
+			_deque.push_back(InputChecker(argv[i]));
 		}	catch (std::exception &e) {
 			std::cerr << "[Input " << i <<  "]" << e.what() << std::endl;   
 		}
 	}
-
-	Sort();
 }
 
 
@@ -50,10 +45,34 @@ PmergeMe::~PmergeMe() {
 	
 }
 
+void PmergeMe::sortVector() {
+	struct timeval start,end;
+	
+	gettimeofday(&start, NULL);
+
+	this->Sort(_vector);
+	
+	gettimeofday(&end, NULL);
+	_vectorTime = (end.tv_sec - start.tv_sec) * 1000000.0 + (end.tv_usec - start.tv_usec);
+}
+
+void PmergeMe::sortDeque() {
+	struct timeval start,end;
+	gettimeofday(&start, NULL);
+	
+	this->Sort(_deque);
+	
+	gettimeofday(&end, NULL);
+	_dequeTime = (end.tv_sec - start.tv_sec) * 1000000.0 + (end.tv_usec - start.tv_usec);
+}	
+
 std::ostream &operator<<(std::ostream &out, const PmergeMe &arr) {
-	out << "Original Array : \n";
-	for(size_t i = 0; i < arr.orig.size(); i++)
-		out << arr.orig[i] << " ";
+	out << "In vector : \n\t";
+	for(size_t i = 0; i < arr._vector.size(); i++)
+		out << arr._vector[i] << " ";
+	out << "\nIn deque : \n\t";
+	for(size_t i = 0; i < arr._deque.size(); i++)
+		out << arr._deque[i] << " ";
 	out << "\n";
 	return out;
 }
