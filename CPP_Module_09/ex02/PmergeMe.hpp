@@ -20,12 +20,32 @@
 
 #include <stdlib.h>
 #include <stdbool.h>
+
+#define RED "\033[38;5;196m"
+#define RED_BG "\033[48;5;196m"
+
+#define GREEN "\033[38;5;34m"
+#define GREEN_BG "\033[48;5;34m"
+
+#define YELLOW "\033[38;5;220m"
+#define YELLOW_BG "\033[48;5;220m"
+
+#define PURPLE "\033[38;5;135m"
+
+#define BLUE "\033[38;5;18m"
+#define BLUE_BG "\033[48;5;18m"
+
+#define WHITE "\033[38;5;195m"
+#define WHITE_BG "\033[48;5;195m"
+
+#define END "\033[0m"
+
 class PmergeMe
 {
   private:
 	std::vector<int> _vector;
 	std::deque<int> _deque;
-	
+
 	double _vectorTime;
 	double _dequeTime;
 	
@@ -36,12 +56,14 @@ class PmergeMe
 	template <typename Container>
 	void Sort(Container &container) {
 		 std::sort(container.begin(), container.end());
+
+		 
 	}
 
 	void sortVector();
 	void sortDeque();
 	
-	void displayOutput();
+	void displayOutput(char **argv);
 	
 	friend std::ostream &operator<<(std::ostream &out, const PmergeMe &src);
 	

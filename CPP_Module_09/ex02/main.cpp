@@ -22,9 +22,10 @@ int	main(int argc, char **argv) {
 	PmergeMe pm(argv);
 	
 	pm.sortDeque();
-	
 	pm.sortVector();
 
-	std::cout << pm << std::endl;
+	pm.displayOutput(argv);
+
+	// std::cout << pm << std::endl;
 	return (0);
 }

@@ -45,6 +45,33 @@ PmergeMe::~PmergeMe() {
 	
 }
 
+void PmergeMe::displayOutput(char **argv) {
+	//display input
+	std::cout << "\t" << BLUE << "Before : " << END;
+	for(size_t i = 1; argv[i]; i++) {
+		if (i == 5 + 1) {
+			std::cout << "\t...";
+			break;
+		}
+		std::cout << RED << "\t" << atoi(argv[i]) ;
+	}
+	std::cout << END << "\n\t" << BLUE << "After  : " << END;
+	//display output
+	for(size_t i = 0; i < _vector.size(); i++) {
+		if (i == 5) {
+			std::cout << "\t...";
+			break;
+		}
+		std::cout << GREEN << "\t" << _vector[i] ;
+	}
+	std::cout << END << "\n\n\t" << "[" << PURPLE << _vector.size() << END << WHITE << " Numbers"  << "]\n\n" << END;
+	//display time
+	std::cout << PURPLE << "\tVector :\t" << END << _vectorTime << " us\n";
+	std::cout << PURPLE << "\tDeque  :\t" << END << _dequeTime << " us\n\n";
+
+}
+
+
 void PmergeMe::sortVector() {
 	struct timeval start,end;
 	
