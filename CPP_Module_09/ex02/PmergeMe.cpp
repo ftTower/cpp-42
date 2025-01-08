@@ -68,7 +68,6 @@ void PmergeMe::displayOutput(char **argv) {
 	//display time
 	std::cout << PURPLE << "\tVector :\t" << END << _vectorTime << " us\n";
 	std::cout << PURPLE << "\tDeque  :\t" << END << _dequeTime << " us\n\n";
-
 }
 
 

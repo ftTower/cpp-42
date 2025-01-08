@@ -55,9 +55,42 @@ class PmergeMe
 
 	template <typename Container>
 	void Sort(Container &container) {
-		 std::sort(container.begin(), container.end());
+		std::cout << RED_BG << "STARTING SORT" << END << std::endl;
+		// std::sort(container.begin(), container.end());
+		
+		
+		//? rest value and bool for unpair rest
+		std::pair<int, bool> unpairRest;
+		unpairRest.first = 0;
+		unpairRest.second = false;
+		
+		
+		//!make pairs
+		std::vector<std::pair<int, int> > pairsList;
+		if (container.size() % 2 != 0) {
+			unpairRest.first = container.back();
+			unpairRest.second = true;
+		}
+		for(size_t i = 0; i < container.size(); i += 2) {
+			if (i + 1 < container.size()) {
+				pairsList.push_back(std::make_pair(container[i], container[i + 1]));
+				if (pairsList.back().second < pairsList.back().first)
+					std::swap(pairsList.back().second, pairsList.back().first);
+			}
+		}
+		
+		//*print pairs
+		for(size_t i = 0; i < pairsList.size(); i++) {
+			std::cout << GREEN_BG << pairsList[i].first << "  " << pairsList[i].second << END << " ";
+		}
+		std::cout << std::endl;
+		if (unpairRest.second)
+			std::cout << YELLOW_BG << unpairRest.first << END << std::endl;
+		
 
-		 
+		
+
+		 (void)unpairRest;
 	}
 
 	void sortVector();
