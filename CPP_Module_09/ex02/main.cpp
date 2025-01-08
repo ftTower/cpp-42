@@ -21,7 +21,7 @@ int	main(int argc, char **argv) {
 
 	PmergeMe pm(argv);
 	
-	pm.sortDeque();
+	// pm.sortDeque();
 	pm.sortVector();
 
 	pm.displayOutput(argv);

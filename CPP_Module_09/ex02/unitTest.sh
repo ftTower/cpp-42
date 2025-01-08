@@ -9,7 +9,7 @@ make re && clear && echo
 #echo "Test 5 :" && echo 
 #$PMM_PROGRAM  `shuf -i 1-5 -n 5 | tr "\n" " "`
 
-echo "Test 10 :" && echo 
+echo "Test 11 :" && echo 
 $PMM_PROGRAM  `shuf -i 1-11 -n 11 | tr "\n" " "`
 
 # echo "Test 1000 :" && echo 

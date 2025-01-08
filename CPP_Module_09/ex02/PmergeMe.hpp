@@ -54,11 +54,40 @@ class PmergeMe
 	~PmergeMe();
 
 	template <typename Container>
+	Container mergeSort(Container &container, int pairLvl) {
+		
+		std::vector<std::pair<typename Container::value_type, typename Container::value_type> > list;
+		for (size_t i = 0; i < container.size(); i += 2) {
+			if (i + 1 < container.size()) {
+				list.push_back(std::make_pair(container[i], container[i + 1]));
+				if (list.back().second < list.back().first)
+					std::swap(list.back().second, list.back().first);
+			}
+		}
+		
+		Container sortedContainer;
+		for (size_t i = 0; i < list.size(); ++i) {
+			sortedContainer.push_back(list[i].first);
+			sortedContainer.push_back(list[i].second);
+		}
+		
+		if (container.size() % 2 != 0) {
+			sortedContainer.push_back(container.back());
+		}
+		
+		return sortedContainer;
+	} 
+
+	template <typename Container>
 	void Sort(Container &container) {
 		std::cout << RED_BG << "STARTING SORT" << END << std::endl;
 		// std::sort(container.begin(), container.end());
 		
-		
+		for(size_t i = 0; i < container.size(); i++) {
+			std::cout << GREEN_BG << "  " << container[i] << "  " << END << " ";
+		}
+		std::cout << std::endl;
+
 		//? rest value and bool for unpair rest
 		std::pair<int, bool> unpairRest;
 		unpairRest.first = 0;
@@ -66,26 +95,29 @@ class PmergeMe
 		
 		
 		//!make pairs
-		std::vector<std::pair<int, int> > pairsList;
 		if (container.size() % 2 != 0) {
 			unpairRest.first = container.back();
 			unpairRest.second = true;
 		}
-		for(size_t i = 0; i < container.size(); i += 2) {
-			if (i + 1 < container.size()) {
-				pairsList.push_back(std::make_pair(container[i], container[i + 1]));
-				if (pairsList.back().second < pairsList.back().first)
-					std::swap(pairsList.back().second, pairsList.back().first);
-			}
-		}
+		// std::vector<std::pair<int, int> > pairsList;
+		// for(size_t i = 0; i < container.size(); i += 2) {
+		// 	if (i + 1 < container.size()) {
+		// 		pairsList.push_back(std::make_pair(container[i], container[i + 1]));
+		// 		if (pairsList.back().second < pairsList.back().first)
+		// 			std::swap(pairsList.back().second, pairsList.back().first);
+		// 	}
+		// }
+
 		
-		//*print pairs
-		for(size_t i = 0; i < pairsList.size(); i++) {
-			std::cout << GREEN_BG << pairsList[i].first << "  " << pairsList[i].second << END << " ";
+		Container tmp = mergeSort(container, 0);
+
+		// //*print pairs
+		for(size_t i = 0; i < tmp.size(); i++) {
+			std::cout << YELLOW_BG << "  " << tmp[i] << "  " << END << " ";
 		}
 		std::cout << std::endl;
-		if (unpairRest.second)
-			std::cout << YELLOW_BG << unpairRest.first << END << std::endl;
+		// if (unpairRest.second)
+		// 	std::cout << YELLOW_BG << unpairRest.first << END << std::endl;
 		
 
 		
