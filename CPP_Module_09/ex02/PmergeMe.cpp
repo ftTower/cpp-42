@@ -70,6 +70,23 @@ void PmergeMe::displayOutput(char **argv) {
 	std::cout << PURPLE << "\tDeque  :\t" << END << _dequeTime << " us\n\n";
 }
 
+std::vector<size_t> JacobsthalSequence () {
+	std::vector<size_t> jList;
+	jList.push_back(0);
+	jList.push_back(1);
+	while(1) {
+		size_t n = 2 * jList.back() - 1 + jList.back() - 2;
+		if (n < jList.back() - 1)
+			break ;
+		jList.push_back(n);
+	}
+	return jList;
+}
+
+std::vector<size_t> PmergeMe::getJacobsthalNum() {
+	return (JacobsthalSequence());
+}
+
 
 void PmergeMe::sortVector() {
 	struct timeval start,end;
