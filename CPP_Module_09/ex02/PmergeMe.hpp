@@ -52,6 +52,7 @@ class PmergeMe
   public:
 	PmergeMe(char **argv);
 	~PmergeMe();
+	std::vector<size_t> getJacobsthalNum();
 
 	template <typename Container>
 	void Sort(Container &container) {
