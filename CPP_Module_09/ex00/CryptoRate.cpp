@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "CryptoRate.hpp"
+#include <cmath>     // Pour HUGE_VAL
 
 // class CryptoRate {
 		
@@ -62,9 +63,30 @@ unsigned int CryptoRate::getDay() {
 }
 
 float CryptoRate::getRate() {
-	if (!getData().empty())
-		return std::atof(getData().substr(11).c_str());
-	return 0;
+    if (getData().size() > 25)
+		throw(std::runtime_error("Input tooooo long"));
+	else if (!getData().empty()) {
+        char *endptr;
+        double tmp = std::strtod(getData().substr(11).c_str(), &endptr);
+        
+        if (endptr == getData().substr(11).c_str()) {
+            std::cerr << "Erreur de conversion de chaîne en nombre" << std::endl;
+            throw std::runtime_error("Erreur de conversion");
+        }
+        
+        if (tmp == HUGE_VAL || tmp == -HUGE_VAL) {
+            std::cout << tmp << " Input too big or too small!" << std::endl;
+            throw std::runtime_error("Input too big or too small!");
+        }
+
+        if (tmp > std::numeric_limits<float>::max() || tmp < -std::numeric_limits<float>::max()) {
+            std::cout << tmp << " Input too big or too small!" << std::endl;
+            throw std::runtime_error("Input too big or too small!");
+        }
+
+        return static_cast<float>(tmp);
+    }
+    return 0;
 }
 
 std::string CryptoRate::getData() {

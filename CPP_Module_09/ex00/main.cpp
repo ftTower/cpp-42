@@ -20,7 +20,7 @@ int		main(int argc, char **argv) {
 		return (std::cerr << RED << "ERROR : "  << END << argv[0] << " <path>" << std::endl, 1);
 	}
 	try {
-		Btc btc(argv[1]);	
+			Btc btc(argv[1]);	
 		
 	}catch (std::exception &e) {
 		std::cerr << RED << "ERROR : "<< END << e.what() << std::endl;
