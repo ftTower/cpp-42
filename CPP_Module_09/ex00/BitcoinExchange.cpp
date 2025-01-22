@@ -13,11 +13,11 @@
 #include "BitcoinExchange.hpp"
 #include <limits>
 
-float	calculateBTC(float value, float input)
+double	calculateBTC(double value, double input)
 {
-	if (value == 0.0f)
-		return (0.0f);
-	return (value / input);
+	if (input == 0.0)
+		return (0.0);
+	return (value * input);
 }
 
 int	dateToDays(CryptoRate &date)
@@ -83,11 +83,11 @@ void	displayDate(CryptoRate &value)
 void	displayWallet(CryptoRate &value, CryptoRate &input)
 {
 	displayDate(input);
-	std::cout << " ";
+	std::cout << " " << std:: fixed << std::setw(20) << input.getRate();
 	displayDate(value);
-	std::cout << " " << std:: fixed << std::setprecision(2) << value.getRate();
+	std::cout << " " << std:: fixed << std::setw(20) << value.getRate();
 	std::cout << YELLOW << "|" << END;
-	std::cout << " " << BLUE_BG << std::setprecision(10) << calculateBTC(value.getRate(),
+	std::cout << " " << BLUE_BG  << calculateBTC(value.getRate(),
 		input.getRate()) << " Btc" << END;
 	std::cout << std::endl;
 }
@@ -123,8 +123,11 @@ Btc::Btc(const std::string &inputFile) : arr()
 	{
 		try
 		{
-			CryptoRate cur(line, index++);
-			displayWallet(arr[getNearestDate(arr, cur)], cur);
+			if (!line.empty())
+			{
+				CryptoRate cur(line, index++);
+				displayWallet(arr[getNearestDate(arr, cur)], cur);
+			}	
 		}
 		catch (std::exception &e)
 		{

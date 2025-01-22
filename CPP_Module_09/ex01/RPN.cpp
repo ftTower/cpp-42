@@ -85,19 +85,24 @@ void RPN::RpnCalculationElements()
 	else if (!HadOperand())
 		throw(std::runtime_error("Cannot do operation with no operand!"));
 	
-	size_t i;
-	for(i = 0; i < arr.size(); i++) {
-		if (arr[i].getType() != TYPE_NUM)
-			break ;
-	}
-	if (i < 2)
-		throw(std::runtime_error("not enough operator !"));
-	int buf = calculation(arr[i - 2], arr[i - 1], arr[i]);
+	// size_t i;
+	// for(i = 0; i < arr.size(); i++) {
+	// 	if (arr[i].getType() != TYPE_NUM)
+	// 		break ;
+	// }
+	// if (i < 2)
+	// 	throw(std::runtime_error("not enough operator !"));
+	// int buf = calculation(arr[i - 2], arr[i - 1], arr[i]);
 	
-	std::cout <<  GREEN_BG << std::setw(3) <<buf << " "  << END << std::endl;
+	// std::cout <<  GREEN_BG << std::setw(3) <<buf << " "  << END << std::endl;
 	
-	arr.erase(arr.begin() + i - 2, arr.begin() + i + 1);
-	arr.insert(arr.begin(), Element(buf));
+	// arr.erase(arr.begin() + i - 2, arr.begin() + i + 1);
+	// arr.insert(arr.begin(), Element(buf));
+
+	//! need changing algo to two stacks with numbers ans ops
+	// 	"1 2 * 2 / 2 + 5 * 6 - 1 3 * - 4 5 * * 8 /"
+
+
 }
 
 void RPN::CalculArr() {
