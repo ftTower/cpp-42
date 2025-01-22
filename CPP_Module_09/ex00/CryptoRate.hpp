@@ -14,7 +14,8 @@
 #include <algorithm>
 #include <fstream>
 #include <iostream>
-#include <vector>
+//#include <vector>
+#include <list>
 #include <string>
 #include <cmath>
 #include <iomanip>
@@ -48,12 +49,12 @@ class CryptoRate
 	CryptoRate(std::string &inputData, size_t pos);
 	~CryptoRate();
 	
-	unsigned int getYear();
-	unsigned int getMonth();
-	unsigned int getDay();
-	float 		 getRate();
+	unsigned int getYear() const;
+	unsigned int getMonth() const;
+	unsigned int getDay() const;
+	float 		 getRate() const;
 
-	std::string  getData();
+	std::string  getData() const;
 	
 };
 

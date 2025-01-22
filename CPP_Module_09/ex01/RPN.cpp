@@ -12,14 +12,10 @@
 
 #include "RPN.hpp"
 
-// cd ../ex01 && make re && clear && valgrind ./RPN "          1 1 + 2 *        +   3 -" && make fclean
-
 RPN::~RPN()
 {
 }
 
-// (((1 * 2) / 2) * 2) = 2
-// 2 2 4 - + == 2 + 2 - 4 = 0;
 
 RPN::RPN(const std::string &input)
 {
@@ -37,6 +33,14 @@ RPN::RPN(const std::string &input)
 		else if (input[index] != ' ')
 			arr.push_back(Element(input[index]));
 		index++;
+	}
+	if (arr.empty())
+		throw(std::runtime_error("No number or operator in input !"));
+	for (int i = arr.size() - 1 ; i >= 0; i--) {
+		if (arr[i].isOperand())
+			op.push(arr[i]);
+		else
+			nbs.push(arr[i]);
 	}
 }
 
@@ -70,48 +74,31 @@ int	calculation(Element nb1, Element nb2, Element operand)
 	return (static_cast<int> (buf));		
 }
 
-bool RPN::HadOperand() const { 
-	for (size_t i = 0; i < arr.size(); i++)
-		if (_isOperand(arr[i].getValue()))
-			return (true);
-	return false;
-}
-
-void RPN::RpnCalculationElements()
-{
-	displayArr();
-	if (arr.size() < 3)
-		throw(std::runtime_error("Cannot do operation with less than 3 elements!"));
-	else if (!HadOperand())
-		throw(std::runtime_error("Cannot do operation with no operand!"));
-	
-	// size_t i;
-	// for(i = 0; i < arr.size(); i++) {
-	// 	if (arr[i].getType() != TYPE_NUM)
-	// 		break ;
-	// }
-	// if (i < 2)
-	// 	throw(std::runtime_error("not enough operator !"));
-	// int buf = calculation(arr[i - 2], arr[i - 1], arr[i]);
-	
-	// std::cout <<  GREEN_BG << std::setw(3) <<buf << " "  << END << std::endl;
-	
-	// arr.erase(arr.begin() + i - 2, arr.begin() + i + 1);
-	// arr.insert(arr.begin(), Element(buf));
-
-	//! need changing algo to two stacks with numbers ans ops
-	// 	"1 2 * 2 / 2 + 5 * 6 - 1 3 * - 4 5 * * 8 /"
-
-
-}
-
 void RPN::CalculArr() {
-	try {
-		while(arr.size() > 1)
-			RpnCalculationElements();
-	} catch (std::exception &e){
-		std::cerr << "ERROR : " << e.what() << std::endl;
+    std::stack<int> stack;
+
+    for (size_t i = 0; i < arr.size(); ++i) {
+        Element elem = arr[i];
+        if (elem.getType() == TYPE_NUM) {
+            stack.push(elem.getValue());
+        } else {
+            if (stack.size() < 2)
+                throw std::runtime_error("Invalid RPN expression: not enough numbers for operation!");
+
+            int b = stack.top(); stack.pop(); 
+            int a = stack.top(); stack.pop(); 
+
+            int result = calculation(Element(a), Element(b), elem);
+            stack.push(result); 
+        }
+    }
+
+    if (stack.size() != 1){
+        throw std::runtime_error("Invalid RPN expression: too many numbers or operators!");
 	}
+	
+	displayArr();
+    std::cout << "Result: " << stack.top() << std::endl;
 }
 
 void RPN::displayArr()
@@ -123,12 +110,10 @@ void RPN::displayArr()
 	}
 	
 	for (size_t y = 0; y < arr.size(); y++) {
-		if ((i > 2 && y > i - 3 && y < i + 1) || (i < 3 && y < 3))
-			std::cout << BLUE_BG;
-		else if (arr[y].getType() != TYPE_NUM)
+		if (arr[y].getType() != TYPE_NUM)
 			std::cout << YELLOW_BG;
 		else
-			std::cout << WHITE_BG;
+			std::cout << BLUE_BG;
 		std::cout  << arr[y] << END;
 	}
 	std::cout << std::endl;

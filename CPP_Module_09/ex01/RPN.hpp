@@ -13,6 +13,7 @@
 #pragma once
 
 #include <vector>
+#include <stack>
 #include <iostream>
 #include <iomanip>
 #include <climits>
@@ -43,6 +44,9 @@ class RPN {
 	private :
 		RPN();
 		std::vector <Element> arr;
+		
+		std::stack	<Element> nbs;
+		std::stack 	<Element> op;
 
 	public :
 		RPN(const std::string &input);

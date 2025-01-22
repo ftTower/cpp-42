@@ -15,7 +15,7 @@
 class Btc
 {
   private:
-	std::vector<CryptoRate> arr;
+	std::list<CryptoRate> arr;
 	Btc();
 
   public:

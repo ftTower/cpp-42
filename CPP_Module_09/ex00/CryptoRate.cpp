@@ -43,26 +43,26 @@ CryptoRate::CryptoRate(std::string &inputData, size_t pos) : data(inputData), _p
 			throw(std::runtime_error(YELLOW + data + END + " Day format invalid"));
 };
 
-unsigned int CryptoRate::getYear() {
+unsigned int CryptoRate::getYear() const {
 	if (!getData().empty())
 		return atoi(getData().substr(0, 4).c_str());
 	return 0;
 }
 
-unsigned int CryptoRate::getMonth() {
+unsigned int CryptoRate::getMonth() const {
 	if (!getData().empty())
 		return atoi(getData().substr(5, 2).c_str());
 	return 0;
 }
 
 
-unsigned int CryptoRate::getDay() {
+unsigned int CryptoRate::getDay() const {
 	if (!getData().empty())
 		return atoi(getData().substr(8, 2).c_str());
 	return 0;
 }
 
-float CryptoRate::getRate() {
+float CryptoRate::getRate()  const{
     if (getData().size() > 25)
 		throw(std::runtime_error("Input tooooo long"));
 	else if (!getData().empty()) {
@@ -89,7 +89,7 @@ float CryptoRate::getRate() {
     return 0;
 }
 
-std::string CryptoRate::getData() {
+std::string CryptoRate::getData() const {
 	return (data);
 }
 
