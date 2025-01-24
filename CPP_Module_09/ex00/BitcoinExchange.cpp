@@ -22,14 +22,17 @@ std::list<CryptoRate>::iterator getNearestDate(std::list<CryptoRate> &arr, Crypt
         return arr.end();
 
     int inputDays = dateToDays(input);
-    std::list<CryptoRate>::iterator nearestIt = arr.begin();
-    int smallestDiff = std::abs(dateToDays(*nearestIt) - inputDays);
+    std::list<CryptoRate>::iterator nearestIt = arr.end();
 
-    for (std::list<CryptoRate>::iterator it = ++arr.begin(); it != arr.end(); ++it) {
-        int currentDiff = std::abs(dateToDays(*it) - inputDays);
-        if (currentDiff < smallestDiff) {
-            smallestDiff = currentDiff;
-            nearestIt = it;
+    for (std::list<CryptoRate>::iterator it = arr.begin(); it != arr.end(); ++it) {
+        int currentDays = dateToDays(*it);
+        if (currentDays == inputDays) {
+            return it; 
+        }
+        if (currentDays < inputDays) {
+            if (nearestIt == arr.end() || currentDays > dateToDays(*nearestIt)) {
+                nearestIt = it;
+            }
         }
     }
     return nearestIt;

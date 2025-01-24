@@ -13,18 +13,6 @@
 #include "Element.hpp"
 #include <cctype>
 
-// class Element {
-// public :
-// Element(std::string &input);
-// ~Element();
-//
-// int getValue() const;
-// int getType() const;
-// private :
-// int		value;
-// t_type type;
-// };
-
 bool	_isOperand(char c)
 {
 	return (c == '/' || c == '*' || c == '-' || c == '+');
@@ -38,8 +26,6 @@ bool Element::isOperand() const
 
 int Element::getValue() const
 {
-	// if (getType() == TYPE_NUM)
-	// 	return (this->value - '0');
 	return (this->value);
 }
 

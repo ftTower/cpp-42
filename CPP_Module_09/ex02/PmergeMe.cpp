@@ -62,9 +62,10 @@ void PmergeMe::displayOutput(char **argv) {
 			std::cout << "\t...";
 			break;
 		}
-		std::cout << GREEN << "\t" << _vector[i] ;
+		std::cout << GREEN << "\t" << _vector[i] << END;
 	}
-	std::cout << END << "\n\n\t" << "[" << PURPLE << _vector.size() << END << WHITE << " Numbers"  << "]\n\n" << END;
+	std::cout << "\n\n";
+	// std::cout << "\t[" << PURPLE << _vector.size() << END << WHITE << " Numbers"  << "]\n\n" << END;
 	//display time
 	std::cout << PURPLE << "\tVector :\t" << END << _vectorTime << " us\n";
 	std::cout << PURPLE << "\tDeque  :\t" << END << _dequeTime << " us\n\n";
